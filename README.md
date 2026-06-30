@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Elite Fitness Coach Landing Page
 
-## Getting Started
+An ultra-modern, high-performance landing page for an elite fitness coach and athletic trainer, built using **Next.js 15 (App Router)**, **React 19**, **GSAP**, **Framer Motion**, and **Tailwind CSS**.
 
-First, run the development server:
+This landing page features smooth cinematic video layouts, dynamic scroll-triggered animations, premium typography, custom components, and highly responsive modern UI sections designed to engage and convert potential clients.
+
+---
+
+## 🚀 Key Features
+
+- **Cinematic Hero Video Layering:** Rich video background with custom SVG text mask overlays and high-impact headlines.
+- **Scroll-Driven Interactive Animations:** Utilizing **GSAP ScrollTrigger** and **Framer Motion** for state-of-the-art interactive scrolling and viewport effects.
+- **Dynamic Text Effects:** Immersive custom text animations including character-by-character `SplitText` and smooth `BlurText` loading transitions.
+- **Achievements & Portfolio:** Interactive grids showcasing professional certificates, credentials, and career achievements.
+- **Modular & Clean Architecture:** Strongly decoupled features directory (`src/features`) and shareable atomic components (`src/shared`).
+- **Fully Responsive Design:** Tailored for a flawless experience across ultra-wide monitors, laptops, tablets, and smartphones.
+- **Premium Performance:** Fully optimized assets, lazy loading, and modern layout practices.
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 15.2.x (App Router)
+- **Library:** React 19
+- **Styling:** Tailwind CSS, PostCSS
+- **Animations:**
+  - GSAP (GreenSock Animation Platform) & `@gsap/react`
+  - Framer Motion
+- **Icons:** Lucide React, Custom SVGs
+- **Package Manager:** PNPM (Workspace-enabled)
+- **Code Quality:** ESLint & TypeScript
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+fitness-coach-landing/
+├── public/                  # Static assets
+│   ├── icons/               # SVGs, icons, and logo assets
+│   ├── images/              # High-res photography & coach portraits
+│   └── videos/              # Optimized hero backgrounds & mask videos
+├── src/
+│   ├── app/                 # Next.js App Router (Layouts, pages, globals.css)
+│   ├── features/            # Decoupled business logic & sections
+│   │   ├── hero/            # Video-driven hero section
+│   │   ├── about/           # Detailed biographical coach info
+│   │   ├── achievements/    # Interactive statistics & milestone grid
+│   │   ├── navbar/          # Responsive sticky navigation bar
+│   │   └── contact/         # Modern conversion form & CTA
+│   ├── providers/           # Context APIs (e.g., ScrollContext)
+│   └── shared/              # Shared components & types
+│       ├── components/      # SplitText, BlurText, Container, SectionTitle, etc.
+│       └── types/           # Global TypeScript type definitions
+└── configuration files      # tsconfig.json, next.config.ts, tailwind.config.ts, etc.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+Make sure you have [Node.js](https://nodejs.org/) (v18+) and [pnpm](https://pnpm.io/) installed.
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/fitness-coach-landing.git
+cd fitness-coach-landing
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Install dependencies
+```bash
+pnpm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Run the development server
+```bash
+pnpm dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the live results!
 
-## Deploy on Vercel
+### 4. Build for production
+```bash
+pnpm build
+pnpm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Design & Animation Details
+
+### GreenSock (GSAP) & ScrollTrigger
+GSAP is leveraged for precise scroll-linked timelines, ensuring animations play fluidly based on the user's viewport position without causing jank or layout shifts.
+
+### Framer Motion
+We employ Framer Motion for rapid declarative component-level entries, micro-interactions, hover states, and seamless spring physics on UI buttons.
+
+### Custom Component Highlights
+- `<SplitText />`: Automatically splits words/characters to apply delays and directional slides.
+- `<BlurText />`: Uses SVG filters and CSS transitions to elegantly reveal text from a blurred state.
+- `<Container />`: Enforces standard responsive padding and max-widths across all page sections.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
