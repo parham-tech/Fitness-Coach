@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import Container from "@/shared/components/Container";
-import { motion } from "framer-motion";
-import SplitText from "@/shared/components/SplitText"
+import { motion, Variants } from "framer-motion";
+import SplitText from "@/shared/components/SplitText";
 
 export default function Hero() {
 
   // 🎬 Framer Motion variants
-  const fadeInText = {
+  const fadeInText: Variants = {
     hidden: { opacity: 0, y: -20 },
     visible: (i: number) => ({
       opacity: 1,
@@ -16,19 +16,19 @@ export default function Hero() {
       transition: {
         delay: i * 0.2,
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.33, 1, 0.68, 1],
       },
     }),
   };
 
-  const fadeInMedia = {
+  const fadeInMedia: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
         duration: 1,
-        ease: "easeOut",
+        ease: [0.33, 1, 0.68, 1],
       },
     },
   };
