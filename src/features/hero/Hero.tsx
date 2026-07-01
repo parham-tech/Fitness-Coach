@@ -1,11 +1,25 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Container from "@/shared/components/Container";
 import { motion, Variants } from "framer-motion";
 import SplitText from "@/shared/components/SplitText";
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("Autoplay failed or was prevented:", error);
+        });
+      }
+    }
+  }, []);
 
   // 🎬 Framer Motion variants
   const fadeInText: Variants = {
@@ -136,10 +150,13 @@ export default function Hero() {
           <div className="absolute inset-0" />
 
           <video
+            ref={videoRef}
             src="/videos/herovideo.mp4"
             autoPlay
             muted
+            loop
             playsInline
+            preload="auto"
             className="w-full h-full object-cover scale-110 origin-center rounded-2xl absolute inset-0"
           />
         </motion.div>
