@@ -48,18 +48,18 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center">
-      <Container className="grid gap-10 lg:grid-cols-2">
+    <section id="home" className="relative flex mt-7 sm:mt-16 items-center pt-20 md:pt-16 lg:pt-16">
+      <Container className="grid gap-12 md:grid-cols-2  items-center">
 
         {/* LEFT SIDE */}
         <motion.div
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-2"
+          className="flex flex-col items-center md:items-start"
         >
 
           {/* 🔥 GSAP SPLIT TEXT (ONLY H1) */}
-          <div className="font-bebas text-[64px] leading-none uppercase">
+          <div className="font-bebas text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-none uppercase">
             <SplitText
               text="MAHAN BALAEI"
               splitType="chars"
@@ -71,16 +71,16 @@ export default function Hero() {
           <motion.h2
             custom={1}
             variants={fadeInText}
-            className="font-bebas text-[48px] leading-none uppercase"
+            className=" font-bebas text-3xl sm:text-4xl md:text-5xl lg:text-[48px]  leading-none uppercase"
           >
-            Strength & <br />
+            Strength & <br className="hidden md:block"/>
             Conditioning Coach
           </motion.h2>
 
           <motion.p
             custom={2}
             variants={fadeInText}
-            className="font-bebas text-[32px] leading-none text-yellow-400"
+            className="font-bebas text-xl sm:text-2xl md:text-3xl lg:text-[32px] leading-none text-yellow-400 animate-pulse"
           >
             Bodybuilding & Powerlifting Expert
           </motion.p>
@@ -89,19 +89,20 @@ export default function Hero() {
           <motion.div
             custom={3}
             variants={fadeInText}
-            className="mt-6 flex gap-4"
+            className="mt-6 flex flex-col self-stretch mx-16 sm:mx-0 sm:self-auto sm:flex-row gap-4"
           >
-            <button className="flex font-bold text-[14px] justify-center items-center gap-2 italic w-52 bg-red-500 border border-black px-6 py-2 rounded-md">
+            <button className="flex font-bold text-[.7rem] sm:text-sm justify-center items-center gap-2 italic w-full sm:w-42 lg:w-52 bg-red-500 border border-black px-4 py-2 lg:px-6 lg:py-3 rounded-md hover:bg-red-600 transition-colors">
               MY CERTIFICATES
               <Image
                 src="/icons/rightarr.svg"
                 alt="Certificate"
                 width={20}
                 height={20}
+                className="hidden lg:block"
               />
             </button>
 
-            <button className="flex font-bold text-[14px] justify-center italic w-52 border border-yellow-400 px-6 py-2 rounded-md">
+            <button className="flex font-bold text-[.7rem] sm:text-sm justify-center italic w-full sm:w-42 lg:w-52 border border-yellow-400 px-4 py-2 lg:px-6 lg:py-3 rounded-md hover:bg-yellow-400/10 transition-colors">
               MY ACHIEVEMENT
             </button>
           </motion.div>
@@ -110,30 +111,30 @@ export default function Hero() {
           <motion.div
             custom={4}
             variants={fadeInText}
-            className="flex gap-6 mt-10"
+            className="grid grid-cols-3 sm:grid-cols-3 gap-3 sm:gap-6 mt-10 lg:flex lg:flex-wrap lg:gap-6"
           >
 
-            <div className="flex items-start gap-2">
-              <Image src="/icons/certificate.svg" alt="" width={26} height={28} className="mt-1" />
-              <div className="flex flex-col">
-                <h5 className="font-bold text-[13px] uppercase">PROFESSIONAL</h5>
-                <p className="font-bold text-[11px]">Certificates</p>
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
+              <Image src="/icons/certificate.svg" alt="" width={26} height={28} className="mt-1 flex-shrink-0" />
+              <div className="flex flex-col items-center sm:items-start">
+                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">PROFESSIONAL</h5>
+                <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">Certificates</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-2">
-              <Image src="/icons/trophy.svg" alt="" width={28} height={24} className="mt-1" />
-              <div className="flex flex-col">
-                <h5 className="font-bold text-[13px] uppercase">COMPETITIVE</h5>
-                <p className="font-bold text-[11px]">Achievement</p>
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
+              <Image src="/icons/trophy.svg" alt="" width={28} height={24} className="mt-1 flex-shrink-0" />
+              <div className="flex flex-col items-center sm:items-start">
+                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">COMPETITIVE</h5>
+                <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">Achievement</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-2">
-              <Image src="/icons/sience.svg" alt="" width={24} height={24} className="mt-1" />
-              <div className="flex flex-col">
-                <h5 className="font-bold text-[13px] uppercase">SPORTS SCIENCE</h5>
-                <p className="font-bold text-[11px]">Expertise</p>
+            <div className="flex flex-col sm:flex-row items-center sm:items-start  gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
+              <Image src="/icons/sience.svg" alt="" width={24} height={24} className="mt-1 flex-shrink-0" />
+              <div className="flex flex-col items-center sm:items-start">
+                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white whitespace-nowrap">SPORTS SCIENCE</h5>
+                <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">Expertise</p>
               </div>
             </div>
 
@@ -145,19 +146,18 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           variants={fadeInMedia}
-          className="relative w-full flex items-center justify-center overflow-hidden rounded-2xl"
+          className="relative w-full  lg:aspect-video md:aspect-square aspect-video  flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl border border-white/10"
         >
-          <div className="absolute inset-0" />
 
           <video
             ref={videoRef}
             src="/videos/herovideo.mp4"
             autoPlay
             muted
-            loop
+            
             playsInline
             preload="auto"
-            className="w-full h-full object-cover scale-110 origin-center rounded-2xl absolute inset-0"
+            className="w-full h-full object-cover   origin-center absolute inset-0"
           />
         </motion.div>
 

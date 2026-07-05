@@ -6,3 +6,6 @@ body {
 .font-bebas {
   font-family: var(--font-bebas);
 }
+@theme {
+  --breakpoint-xs: 30rem; /* 480px */
+}
