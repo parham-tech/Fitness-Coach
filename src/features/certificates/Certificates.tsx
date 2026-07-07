@@ -13,8 +13,8 @@ export default function Certificates() {
           Certificates
         </h2>
 
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {[1, 2, 3, 4].map((item) => (
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+          {[1, 2, 3, 4 ,5].map((item) => (
             <div key={item} className="overflow-hidden rounded-lg border border-white/10 bg-zinc-900/50 p-2 hover:border-yellow-400/30 transition-colors">
               <Image
                 src={`/certificates/${item}.jpg`}

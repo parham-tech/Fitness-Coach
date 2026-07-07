@@ -48,7 +48,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative flex mt-7 sm:mt-16 items-center pt-20 md:pt-16 lg:pt-16">
+    <section id="home" className="relative flex mt-7 sm:mt-16 lg:mt-30 items-center pt-20 md:pt-16 lg:pt-16">
       <Container className="grid gap-12 md:grid-cols-2  items-center">
 
         {/* LEFT SIDE */}

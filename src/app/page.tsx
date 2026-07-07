@@ -19,9 +19,9 @@ export default function Page() {
           <About />
         </section>
 
-        {/* <section id="achievements">
+        <section id="achievements">
           <Achievements />
-        </section> */}
+        </section>
 
         <section id="certificates">
           <Certificates />

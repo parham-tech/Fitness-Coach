@@ -23,7 +23,7 @@ export default function About() {
             <span className="text-[9rem] sm:text-[17rem] md:text-[18rem] lg:text-[19.5vw] xl:text-[250px] font-black tracking-tighter uppercase text-white font-bebas leading-[0.8]">
               MAHAN
             </span>
-            <span className="text-[10rem] sm:text-[18rem] md:text-[19rem] lg:text-[20.5vw] xl:text-[270px] font-black tracking-tighter uppercase text-white font-bebas leading-[0.8]">
+            <span className="text-[10rem] sm:text-[18rem] md:text-[19rem] lg:text-[19.5vw] xl:text-[270px] font-black tracking-tighter uppercase text-white font-bebas leading-[0.8]">
               BALAEI
             </span>
           </div>
