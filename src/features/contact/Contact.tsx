@@ -1,27 +1,40 @@
+import Image from "next/image";
+import Container from "@/shared/components/Container";
+
 const contacts = [
   {
+    src: "/contact/email.svg",
+    alt: "",
+    imageClassName: "w-10 h-10",
     label: "Email",
     value: "coach@example.com",
-    href: "mailto:coach@example.com",
+href: "https://www.mahanbalaei04.com"
   },
   {
+    src: "/contact/instagram.svg",
+    alt: "",
+    imageClassName: "w-10 h-10",
     label: "Instagram",
     value: "@coach.mahan",
-    href: "#",
+    href: "https://instagram.com/coach.mahan",
   },
   {
+    src: "/contact/telegram.svg",
+    alt: "",
+    imageClassName: "w-10 h-10",
     label: "Telegram",
     value: "@mahancoach",
-    href: "#",
+    href: "https://t.me/mahancoach",
   },
   {
-    label: "Location",
+    src: "/contact/linkdin.svg",
+    alt: "",
+    imageClassName: "w-10 h-10",
+    label: "linkdin",
     value: "Online Coaching",
-    href: "#",
+    href: "https://www.linkedin.com/in/mahanbalaei",
   },
 ];
-
-import Container from "@/shared/components/Container";
 
 export default function Contact() {
   return (
@@ -31,42 +44,41 @@ export default function Contact() {
       aria-labelledby="contact-title"
     >
       <Container>
-
         <h2
           id="contact-title"
-          className="text-center text-3xl sm:text-4xl md:text-5xl font-bold uppercase font-bebas text-white tracking-wide"
+          className="text-center text-3xl sm:text-4xl md:text-5xl font-bebas text-white uppercase tracking-wide"
         >
           Contact
         </h2>
 
-        <p className="mt-4 text-center text-sm sm:text-base text-gray-400 max-w-md mx-auto">
-          Get in touch for coaching programs & collaboration
-        </p>
-
-        <div className="mt-12 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           {contacts.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="
-                group border border-white/10
-                bg-zinc-900/40 rounded-xl
-                p-6 text-center
-                transition hover:border-yellow-400/50 hover:bg-zinc-900/60 duration-300
-              "
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={item.label}
+              className="group rounded-xl border border-white/10 bg-zinc-900/40 p-6 text-center transition-all duration-300 hover:border-yellow-400/50 hover:bg-zinc-900/60"
             >
-              <p className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-semibold">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={40}
+                height={40}
+                className={`${item.imageClassName} mx-auto mb-5 object-contain transition-transform duration-300 group-hover:scale-110`}
+              />
+
+              <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400">
                 {item.label}
               </p>
 
-              <p className="mt-2 text-sm sm:text-base font-semibold text-white group-hover:text-yellow-400 transition-colors">
+              <p className="mt-2 text-sm sm:text-base font-semibold text-white transition-colors group-hover:text-yellow-400">
                 {item.value}
               </p>
             </a>
           ))}
         </div>
-
       </Container>
     </section>
   );
