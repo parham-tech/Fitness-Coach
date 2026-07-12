@@ -1,42 +1,47 @@
+"use client";
+
 import Image from "next/image";
 import Container from "@/shared/components/Container";
+import { useLanguage } from "@/providers/LanguageContext";
 
 const contacts = [
   {
     src: "/contact/email.svg",
     alt: "",
     imageClassName: "w-10 h-10",
-    label: "Email",
-    value: "coach@example.com",
-href: "https://www.mahanbalaei04.com"
+    labelKey: "contact.email.label",
+    valueKey: "contact.email.value",
+    href: "https://www.mahanbalaei04.com"
   },
   {
     src: "/contact/instagram.svg",
     alt: "",
     imageClassName: "w-10 h-10",
-    label: "Instagram",
-    value: "@coach.mahan",
+    labelKey: "contact.instagram.label",
+    valueKey: "contact.instagram.value",
     href: "https://instagram.com/coach.mahan",
   },
   {
     src: "/contact/telegram.svg",
     alt: "",
     imageClassName: "w-10 h-10",
-    label: "Telegram",
-    value: "@mahancoach",
+    labelKey: "contact.telegram.label",
+    valueKey: "contact.telegram.value",
     href: "https://t.me/mahancoach",
   },
   {
     src: "/contact/linkdin.svg",
     alt: "",
     imageClassName: "w-10 h-10",
-    label: "linkdin",
-    value: "Online Coaching",
+    labelKey: "contact.linkedin.label",
+    valueKey: "contact.linkedin.value",
     href: "https://www.linkedin.com/in/mahanbalaei",
   },
 ];
 
 export default function Contact() {
+  const { t, isRtl } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -46,19 +51,19 @@ export default function Contact() {
       <Container>
         <h2
           id="contact-title"
-          className="text-center text-3xl sm:text-4xl md:text-5xl font-bebas text-white uppercase tracking-wide"
+          className={`text-center text-3xl sm:text-4xl md:text-5xl ${isRtl ? "" : "font-bebas"} text-white uppercase tracking-wide`}
         >
-          Contact
+          {t("contact.title")}
         </h2>
 
         <div className="mt-12 grid gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           {contacts.map((item) => (
             <a
-              key={item.label}
+              key={item.labelKey}
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={item.label}
+              aria-label={t(item.labelKey)}
               className="group rounded-xl border border-white/10 bg-zinc-900/40 p-6 text-center transition-all duration-300 hover:border-yellow-400/50 hover:bg-zinc-900/60"
             >
               <Image
@@ -70,11 +75,11 @@ export default function Contact() {
               />
 
               <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400">
-                {item.label}
+                {t(item.labelKey)}
               </p>
 
               <p className="mt-2 text-sm sm:text-base font-semibold text-white transition-colors group-hover:text-yellow-400">
-                {item.value}
+                {t(item.valueKey)}
               </p>
             </a>
           ))}

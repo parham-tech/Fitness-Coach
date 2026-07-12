@@ -5,8 +5,10 @@ import Image from "next/image";
 import Container from "@/shared/components/Container";
 import { motion, Variants } from "framer-motion";
 import SplitText from "@/shared/components/SplitText";
+import { useLanguage } from "@/providers/LanguageContext";
 
 export default function Hero() {
+  const { t, isRtl } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -59,30 +61,33 @@ export default function Hero() {
         >
 
           {/* 🔥 GSAP SPLIT TEXT (ONLY H1) */}
-          <div className="font-bebas text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-none uppercase">
-            <SplitText
-              text="MAHAN BALAEI"
-              splitType="chars"
-              className="inline-block"
-            />
+          <div className={`${isRtl ? "" : "font-bebas"} text-4xl  sm:text-5xl md:text-6xl rtl:md:text-5xl lg:text-[64px] leading-none rtl:leading-snug uppercase`}>
+            {isRtl ? (
+              t("hero.name")
+            ) : (
+              <SplitText
+                text={t("hero.name")}
+                splitType="chars"
+                className="inline-block"
+              />
+            )}
           </div>
 
           {/* FRAMER TEXT */}
           <motion.h2
             custom={1}
             variants={fadeInText}
-            className=" font-bebas text-3xl sm:text-4xl md:text-5xl lg:text-[48px]  leading-none uppercase"
+            className={`${isRtl ? "" : "font-bebas"} text-3xl sm:text-4xl md:text-5xl rtl:text-2xl rtl:md:text-4xl lg:text-[48px] leading-none uppercase`}
           >
-            Strength & <br className="hidden md:block"/>
-            Conditioning Coach
+            {t("hero.title")}
           </motion.h2>
 
           <motion.p
             custom={2}
             variants={fadeInText}
-            className="font-bebas text-xl sm:text-2xl md:text-3xl lg:text-[32px] leading-none text-yellow-400 animate-pulse"
+            className={`${isRtl ? "text-lg sm:text-xl md:text-2xl lg:text-[24px]" : "font-bebas text-xl sm:text-2xl md:text-3xl lg:text-[32px]"} leading-none text-yellow-400 animate-pulse mt-2`}
           >
-            Bodybuilding & Powerlifting Expert
+            {t("hero.subtitle")}
           </motion.p>
 
           {/* BUTTONS */}
@@ -91,20 +96,20 @@ export default function Hero() {
             variants={fadeInText}
             className="mt-6 flex flex-col self-stretch mx-16 sm:mx-0 sm:self-auto sm:flex-row gap-4"
           >
-            <button className="flex font-bold text-[.7rem] sm:text-sm justify-center items-center gap-2 italic w-full sm:w-42 lg:w-52 bg-red-500 border border-black px-4 py-2 lg:px-6 lg:py-3 rounded-md hover:bg-red-600 transition-colors">
-              MY CERTIFICATES
+            <a href="#certificates" className="flex font-bold text-[.7rem] sm:text-sm justify-center items-center gap-2 italic w-full sm:w-42 lg:w-52 bg-red-500 border border-black px-4 py-2 lg:px-6 lg:py-3 rounded-md hover:bg-red-600 transition-colors">
+              {t("hero.cert_btn")}
               <Image
                 src="/icons/rightarr.svg"
                 alt="Certificate"
                 width={20}
                 height={20}
-                className="hidden lg:block"
+                className={`hidden lg:block ${isRtl ? "rotate-180" : ""}`}
               />
-            </button>
+            </a>
 
-            <button className="flex font-bold text-[.7rem] sm:text-sm justify-center italic w-full sm:w-42 lg:w-52 border border-yellow-400 px-4 py-2 lg:px-6 lg:py-3 rounded-md hover:bg-yellow-400/10 transition-colors">
-              MY ACHIEVEMENT
-            </button>
+            <a href="#achievements" className="flex font-bold text-[.7rem] sm:text-sm justify-center items-center italic w-full sm:w-42 lg:w-52 border border-yellow-400 px-4 py-2 lg:px-6 lg:py-3 rounded-md hover:bg-yellow-400/10 transition-colors">
+              {t("hero.ach_btn")}
+            </a>
           </motion.div>
 
           {/* ICONS */}
@@ -117,24 +122,24 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
               <Image src="/icons/certificate.svg" alt="" width={26} height={28} className="mt-1 flex-shrink-0" />
               <div className="flex flex-col items-center sm:items-start">
-                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">PROFESSIONAL</h5>
-                <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">Certificates</p>
+                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">{t("hero.high.professional")}</h5>
+                <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">{t("hero.high.professional_desc")}</p>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
               <Image src="/icons/trophy.svg" alt="" width={28} height={24} className="mt-1 flex-shrink-0" />
               <div className="flex flex-col items-center sm:items-start">
-                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">COMPETITIVE</h5>
-                <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">Achievement</p>
+                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">{t("hero.high.competitive")}</h5>
+                <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">{t("hero.high.competitive_desc")}</p>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center sm:items-start  gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
               <Image src="/icons/sience.svg" alt="" width={24} height={24} className="mt-1 flex-shrink-0" />
               <div className="flex flex-col items-center sm:items-start">
-                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white whitespace-nowrap">SPORTS SCIENCE</h5>
-                <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">Expertise</p>
+                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white whitespace-nowrap">{t("hero.high.sports_science")}</h5>
+                <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">{t("hero.high.sports_science_desc")}</p>
               </div>
             </div>
 

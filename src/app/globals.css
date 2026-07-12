@@ -1,6 +1,14 @@
 @import "tailwindcss";
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-inter);
+}
+
+html[lang="fa"] body {
+  font-family: var(--font-vazirmatn), sans-serif;
 }
 
 .font-bebas {

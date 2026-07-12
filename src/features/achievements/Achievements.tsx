@@ -1,53 +1,58 @@
+"use client";
+
 import Image from "next/image";
 import Container from "@/shared/components/Container";
+import { useLanguage } from "@/providers/LanguageContext";
 
 const achievements = [
   {
     src: "/achievements/medal.svg",
     alt: "Medal Achievement",
-    title: "POWERLIFTING CHAMPION",
-    text: "Gilan Province",
+    titleKey: "ach.item1.title",
+    textKey: "ach.item1.text",
     imageClassName: "w-15 h-15",
   },
   {
     src: "/achievements/powerlift.svg",
     alt: "Powerlifting Achievement",
-    title: "BENCH PRESS CHAMPION",
-    text: "Alborz Province",
+    titleKey: "ach.item2.title",
+    textKey: "ach.item2.text",
     imageClassName: "w-20 h-20",
   },
   {
     src: "/achievements/press.svg",
     alt: "Bench Press Achievement",
-    title: "POWERLIFTING CHAMPIONSHIP",
-    text: "Tehran Province",
+    titleKey: "ach.item3.title",
+    textKey: "ach.item3.text",
     imageClassName: "w-26 h-26",
   },
   {
     src: "/achievements/shield_star_logo 1.svg",
     alt: "Shield Star Achievement",
-    title: "17+ YEARS",
-    text: "Training Experience",
+    titleKey: "ach.item4.title",
+    textKey: "ach.item4.text",
     imageClassName: "w-18 h-18",
   },
   {
     src: "/achievements/trophy_logo_traced 1.svg",
     alt: "Trophy Achievement",
-    title: "COMPETITIVE ATHLETE",
-    text: "Multiple Competitions",
+    titleKey: "ach.item5.title",
+    textKey: "ach.item5.text",
     imageClassName: "w-24 h-24",
   },
 ];
 
 export default function Achievements() {
+  const { t, isRtl } = useLanguage();
+
   return (
     <section id="achievements" className="py-16 md:py-28 bg-zinc-950/20">
       <Container>
         <div className="flex items-center gap-6">
           <div className="h-px flex-1 bg-yellow-500/40" />
 
-          <h2 className="font-bebas text-3xl text-yellow-400 uppercase whitespace-nowrap">
-            Achievements
+          <h2 className={`${isRtl ? "" : "font-bebas"} text-3xl text-yellow-400 uppercase whitespace-nowrap`}>
+            {t("ach.title")}
           </h2>
 
           <div className="h-px flex-1 bg-yellow-500/40" />
@@ -72,10 +77,10 @@ export default function Achievements() {
                 className="min-h-12
               mt-2 sm:mt-0 text-center text-xs sm:text-[1rem] font-extrabold text-white uppercase tracking-wider leading-snug"
               >
-                {item.title}
+                {t(item.titleKey)}
               </h3>
               <p className="font-[200] text-[.625rem] sm:text-[.8rem] whitespace-nowrap">
-                {item.text}
+                {t(item.textKey)}
               </p>
               <div className="w-16 h-px bg-yellow-500/40 mt-4" />{" "}
             </div>

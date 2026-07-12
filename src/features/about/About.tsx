@@ -1,6 +1,38 @@
+"use client";
+
 import Container from "@/shared/components/Container";
+import { useLanguage } from "@/providers/LanguageContext";
+import { motion, Variants } from "framer-motion";
 
 export default function About() {
+  const { t, isRtl } = useLanguage();
+
+  // 🎬 Framer Motion variants
+  const fadeInText: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.15,
+        duration: 0.8,
+        ease: [0.33, 1, 0.68, 1],
+      },
+    }),
+  };
+
+  const fadeInMedia: Variants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1,
+        ease: [0.33, 1, 0.68, 1],
+      },
+    },
+  };
+
   return (
     <section
       id="about"
@@ -10,7 +42,13 @@ export default function About() {
       <Container className="grid grid-cols-1 lg:grid-cols-2 mt-10 items-center gap-10 lg:gap-16 ">
 
         {/* IMAGE SIDE - VIDEO MASK */}
-        <div className="relative order-2 lg:order-1 w-full max-w-md sm:max-w-2xl lg:max-w-none mx-auto aspect-[4/3] overflow-hidden rounded-2xl bg-black flex items-center justify-center border border-white/10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInMedia}
+          className="relative order-2 lg:order-1 w-full max-w-md sm:max-w-2xl lg:max-w-none mx-auto aspect-[4/3] overflow-hidden rounded-2xl bg-black flex items-center justify-center border border-white/10"
+        >
           <video
             src="/videos/mask.mp4"
             autoPlay
@@ -27,31 +65,48 @@ export default function About() {
               BALAEI
             </span>
           </div>
-        </div>
+        </motion.div>
 
         {/* TEXT SIDE */}
-        <div className="flex flex-col order-1 lg:order-2">
-          <span className="text-red-500 font-bold text-sm tracking-widest uppercase">
-            ABOUT MAHAN
-          </span>
-
-          <h2
-            id="about-title"
-            className="font-bebas text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight uppercase mt-2"
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-col order-1 lg:order-2"
+        >
+          <motion.span
+            custom={0}
+            variants={fadeInText}
+            className="text-red-500 font-bold text-sm tracking-widest uppercase"
           >
-            Who Am I?
-          </h2>
+            {t("about.tagline")}
+          </motion.span>
 
-          <p className="mt-6 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed font-sans">
-            Mahan Balaei is a graduate in Sports Biology, a certified bodybuilding federation coach, and a strength athlete with over 17 years of training experience. He holds coaching certifications in bodybuilding, physical fitness, and weightlifting, and is a multi-time champion in powerlifting and bench press competitions across the provinces of Gilan, Alborz, and Tehran.
-          </p>
+          <motion.h2
+            id="about-title"
+            custom={1}
+            variants={fadeInText}
+            className={`${isRtl ? "" : "font-bebas"} text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight uppercase mt-2`}
+          >
+            {t("about.title")}
+          </motion.h2>
 
-          <p className="mt-4 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed font-sans">
-            My approach is based on scientific knowledge, practical experience, and continuous performance development in sports.
-          </p>
+          <motion.p
+            custom={2}
+            variants={fadeInText}
+            className="mt-6 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed"
+          >
+            {t("about.p1")}
+          </motion.p>
 
-      
-        </div>
+          <motion.p
+            custom={3}
+            variants={fadeInText}
+            className="mt-4 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed"
+          >
+            {t("about.p2")}
+          </motion.p>
+        </motion.div>
 
       </Container>
     </section>

@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Container from "@/shared/components/Container";
+import { useLanguage } from "@/providers/LanguageContext";
 
 export default function Certificates() {
+  const { t, isRtl } = useLanguage();
+
   return (
     <section
       id="certificates"
@@ -9,8 +14,8 @@ export default function Certificates() {
     >
       <Container>
 
-        <h2 className="mb-12 text-center text-3xl sm:text-4xl md:text-5xl font-bold uppercase font-bebas tracking-wide text-white">
-          Certificates
+        <h2 className={`mb-12 text-center text-3xl sm:text-4xl md:text-5xl font-bold uppercase ${isRtl ? "" : "font-bebas"} tracking-wide text-white`}>
+          {t("cert.title")}
         </h2>
 
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
