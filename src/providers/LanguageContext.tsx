@@ -56,6 +56,9 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Certificates
     "cert.title": "Certificates",
+    "cert.item1.title": "Bodybuilding Coaching",
+    "cert.item2.title": "Physical Fitness",
+    "cert.item3.title": "Weightlifting Coaching",
 
     // Contact
     "contact.title": "Contact",
@@ -111,6 +114,9 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Certificates
     "cert.title": "مدارک و گواهینامه‌ها",
+    "cert.item1.title": "مربیگری بدنسازی",
+    "cert.item2.title": "آمادگی جسمانی",
+    "cert.item3.title": "مربیگری وزنه‌برداری",
 
     // Contact
     "contact.title": "تماس با من",

@@ -51,9 +51,9 @@ export default function Achievements() {
         <div className="flex items-center gap-6">
           <div className="h-px flex-1 bg-yellow-500/40" />
 
-          <h2 className={`${isRtl ? "" : "font-bebas"} text-3xl text-yellow-400 uppercase whitespace-nowrap`}>
+          <button  className={`${isRtl ? "" : "font-bebas"} text-3xl sm:text-4xl text-yellow-400 uppercase whitespace-nowrap`}>
             {t("ach.title")}
-          </h2>
+          </button>
 
           <div className="h-px flex-1 bg-yellow-500/40" />
         </div>

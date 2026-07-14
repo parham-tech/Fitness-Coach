@@ -1,8 +1,22 @@
 "use client";
 
-import Image from "next/image";
 import Container from "@/shared/components/Container";
 import { useLanguage } from "@/providers/LanguageContext";
+
+const certificates = [
+  {
+    id: 1,
+    titleKey: "cert.item1.title",
+  },
+  {
+    id: 2,
+    titleKey: "cert.item2.title",
+  },
+  {
+    id: 3,
+    titleKey: "cert.item3.title",
+  },
+];
 
 export default function Certificates() {
   const { t, isRtl } = useLanguage();
@@ -13,23 +27,39 @@ export default function Certificates() {
       className="py-16 md:py-28 bg-zinc-950/20"
     >
       <Container>
+        <div className="group flex flex-col items-center">
+          <h2
+            className={`inline-block cursor-pointer border border-white px-6 py-3 text-3xl sm:text-4xl font-bold uppercase transition-colors duration-300 hover:border-yellow-400 ${
+              isRtl ? "" : "font-bebas"
+            } tracking-wide text-white`}
+          >
+            {t("cert.title")}
+          </h2>
 
-        <h2 className={`mb-12 text-center text-3xl sm:text-4xl md:text-5xl font-bold uppercase ${isRtl ? "" : "font-bebas"} tracking-wide text-white`}>
-          {t("cert.title")}
-        </h2>
-
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
-          {[1, 2, 3, 4 ,5].map((item) => (
-            <div key={item} className="overflow-hidden rounded-lg border border-white/10 bg-zinc-900/50 p-2 hover:border-yellow-400/30 transition-colors">
-              <Image
-                src={`/certificates/${item}.jpg`}
-                alt={`Certificate ${item}`}
-                width={400}
-                height={550}
-                className="w-full h-auto rounded-md object-cover hover:scale-[1.02] transition-transform duration-300"
-              />
-            </div>
-          ))}
+          <div
+            className="
+              mt-10
+              grid w-full grid-cols-1 gap-6
+              sm:grid-cols-2 lg:grid-cols-3
+              opacity-0 -translate-y-4
+              pointer-events-none
+              transition-all duration-500
+              group-hover:opacity-100
+              group-hover:translate-y-0
+              group-hover:pointer-events-auto
+            "
+          >
+            {certificates.map((certificate) => (
+              <div
+                key={certificate.id}
+                className="rounded-lg border border-white/10 bg-zinc-900/50 p-6 text-center transition-colors hover:border-yellow-400/30 flex flex-col items-center justify-center min-h-[120px]"
+              >
+                <h3 className="text-xl font-semibold text-white">
+                  {t(certificate.titleKey)}
+                </h3>
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
