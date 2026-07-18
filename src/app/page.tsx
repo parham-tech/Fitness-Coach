@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import Navbar from "@/features/navbar/Navbar";
 import Hero from "@/features/hero/Hero";
 import About from "@/features/about/About";
@@ -7,29 +8,52 @@ import Certificates from "@/features/certificates/Certificates";
 import Contact from "@/features/contact/Contact";
 
 export const metadata: Metadata = {
-  title: "Mahan Balaei | Strength Coach - ماهان بالائی | مربی بدنسازی و پاورلیفتینگ",
+  title:
+    "Mahan Balaei | Strength & Conditioning Coach - ماهان بالائی (ماهان بالایی)",
+
   description:
-    "Mahan Balaei is a graduate in Sports Biology, a certified bodybuilding federation coach, and a powerlifting champion with 17+ years of experience. / ماهان بالائی فارغ‌التحصیل زیست‌شناسی ورزشی، مربی رسمی فدراسیون بدنسازی و قهرمان پاورلیفتینگ با بیش از ۱۷ سال سابقه تمرین.",
+    "Mahan Balaei is a Strength & Conditioning Coach, bodybuilding federation coach and powerlifting champion with 17+ years of experience. ماهان بالائی (ماهان بالایی) مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی.",
+
   keywords: [
     "Mahan Balaei",
-    "Bodybuilding Coach",
-    "Strength and Conditioning Coach",
-    "Powerlifting Champion",
-    "Physical Fitness",
-    "Weightlifting Coach",
+    "Mahan Balaei Coach",
     "Mahan Coach",
+    "Strength Coach",
+    "Strength and Conditioning Coach",
+    "Bodybuilding Coach",
+    "Powerlifting Coach",
+    "Powerlifting Champion",
+    "Fitness Coach",
     "ماهان بالائی",
+    "ماهان بالایی",
+    "مربی ماهان بالائی",
+    "مربی ماهان بالایی",
     "مربی بدنسازی",
     "مربی پاورلیفتینگ",
-    "آمادگی جسمانی",
+    "مربی آمادگی جسمانی",
   ],
-  authors: [{ name: "Mahan Balaei" }],
+
+  authors: [
+    {
+      name: "Mahan Balaei",
+    },
+  ],
+
+  creator: "Mahan Balaei",
+
+  metadataBase: new URL("https://mahanbalaei.ir"),
+
   openGraph: {
-    title: "Mahan Balaei | Strength Coach - ماهان بالائی | مربی بدنسازی و پاورلیفتینگ",
+    title:
+      "Mahan Balaei | Strength & Conditioning Coach - ماهان بالائی (ماهان بالایی)",
+
     description:
-      "Mahan Balaei: Graduate in Sports Biology, certified bodybuilding federation coach & powerlifting champion. / ماهان بالائی: فارغ‌التحصیل زیست‌شناسی ورزشی، مربی بدنسازی و قهرمان پاورلیفتینگ.",
-    url: "https://mahan-coach.com", // قابل شخصی‌سازی به آدرس نهایی سایت
-    siteName: "Mahan Balaei Portfolio",
+      "Professional portfolio of Mahan Balaei, Strength Coach, bodybuilding federation coach and powerlifting champion.",
+
+    url: "https://mahanbalaei.ir",
+
+    siteName: "Mahan Balaei",
+
     images: [
       {
         url: "/images/coach.png",
@@ -38,20 +62,43 @@ export const metadata: Metadata = {
         alt: "Mahan Balaei - Strength Coach",
       },
     ],
+
     locale: "fa_IR",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Mahan Balaei | Strength Coach - ماهان بالائی | مربی بدنسازی و پاورلیفتینگ",
+
+    title:
+      "Mahan Balaei | Strength Coach - ماهان بالائی (ماهان بالایی)",
+
     description:
-      "Mahan Balaei: Graduate in Sports Biology, certified bodybuilding federation coach & powerlifting champion. / ماهان بالائی: فارغ‌التحصیل زیست‌شناسی ورزشی، مربی بدنسازی و قهرمان پاورلیفتینگ.",
-    images: ["/images/coach.png"],
+      "Strength & Conditioning Coach, Bodybuilding Coach and Powerlifting Champion.",
+
+    images: [
+      "/images/coach.png",
+    ],
   },
+
   alternates: {
-    canonical: "https://mahan-coach.com",
+    canonical: "https://mahanbalaei.ir",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
+
 
 export default function Page() {
   return (
