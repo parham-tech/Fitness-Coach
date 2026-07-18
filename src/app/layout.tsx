@@ -22,6 +22,7 @@ const vazirmatn = Vazirmatn({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mahanbalaei.ir"),
   title: "Mahan Balaei | Strength Coach",
   description: "Strength & Conditioning Coach Portfolio",
   icons: {

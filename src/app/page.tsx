@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-
 import Navbar from "@/features/navbar/Navbar";
 import Hero from "@/features/hero/Hero";
 import About from "@/features/about/About";
@@ -8,81 +7,88 @@ import Certificates from "@/features/certificates/Certificates";
 import Contact from "@/features/contact/Contact";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mahanbalaei.ir"),
+
   title:
-    "Mahan Balaei | Strength & Conditioning Coach - ماهان بالائی (ماهان بالایی)",
+    "ماهان بالایی | مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی (Mahan Balaei)",
 
   description:
-    "Mahan Balaei is a Strength & Conditioning Coach, bodybuilding federation coach and powerlifting champion with 17+ years of experience. ماهان بالائی (ماهان بالایی) مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی.",
-
-  keywords: [
-    "Mahan Balaei",
-    "Mahan Balaei Coach",
-    "Mahan Coach",
-    "Strength Coach",
-    "Strength and Conditioning Coach",
-    "Bodybuilding Coach",
-    "Powerlifting Coach",
-    "Powerlifting Champion",
-    "Fitness Coach",
-    "ماهان بالائی",
-    "ماهان بالایی",
-    "مربی ماهان بالائی",
-    "مربی ماهان بالایی",
-    "مربی بدنسازی",
-    "مربی پاورلیفتینگ",
-    "مربی آمادگی جسمانی",
-  ],
+    "ماهان بالایی (Mahan Balaei) مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی با ۱۷+ سال سابقه تمرین و تخصص در برنامه‌ریزی تمرینات قدرتی و بهبود عملکرد ورزشی. / Mahan Balaei is a Strength Coach, Bodybuilding Coach & Powerlifting Champion with 17+ years of experience.",
 
   authors: [
     {
       name: "Mahan Balaei",
+      url: "https://mahanbalaei.ir",
     },
   ],
 
   creator: "Mahan Balaei",
 
-  metadataBase: new URL("https://mahanbalaei.ir"),
+  publisher: "Mahan Balaei",
+
+  keywords: [
+    "ماهان بالایی",
+    "مربی ماهان بالایی",
+    "ماهان بالایی مربی بدنسازی",
+    "برنامه تمرینی ماهان بالایی",
+    "مربی بدنسازی",
+    "مربی پاورلیفتینگ",
+    "مربی آمادگی جسمانی",
+    "بهترین مربی بدنسازی",
+    "مربی خصوصی بدنسازی",
+    "برنامه ورزشی آنلاین",
+    "Mahan Balaei",
+    "Mahan Balaei Coach",
+    "Strength & Conditioning Coach",
+    "Bodybuilding Coach",
+    "Powerlifting Coach",
+  ],
+
+  icons: {
+    icon: "/favicon.ico",
+  },
+
+  alternates: {
+    canonical: "https://mahanbalaei.ir",
+  },
 
   openGraph: {
     title:
-      "Mahan Balaei | Strength & Conditioning Coach - ماهان بالائی (ماهان بالایی)",
+      "ماهان بالایی | مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی (Mahan Balaei)",
 
     description:
-      "Professional portfolio of Mahan Balaei, Strength Coach, bodybuilding federation coach and powerlifting champion.",
+      "نمونه کار، رزومه و برنامه‌های ورزشی ماهان بالایی مربی رسمی بدنسازی و قهرمان پاورلیفتینگ. / Professional portfolio of Mahan Balaei, Strength Coach & Powerlifting Champion.",
 
     url: "https://mahanbalaei.ir",
 
-    siteName: "Mahan Balaei",
+    siteName: "ماهان بالایی",
+
+    locale: "fa_IR",
+
+    type: "website",
 
     images: [
       {
         url: "/images/coach.png",
         width: 1200,
         height: 630,
-        alt: "Mahan Balaei - Strength Coach",
+        alt: "ماهان بالایی - مربی بدنسازی و آمادگی جسمانی",
       },
     ],
-
-    locale: "fa_IR",
-    type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
 
     title:
-      "Mahan Balaei | Strength Coach - ماهان بالائی (ماهان بالایی)",
+      "ماهان بالایی | مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی (Mahan Balaei)",
 
     description:
-      "Strength & Conditioning Coach, Bodybuilding Coach and Powerlifting Champion.",
+      "رزومه و برنامه‌های تمرینی ماهان بالایی، مربی بدنسازی و آمادگی جسمانی. / Strength & Conditioning Coach Mahan Balaei portfolio.",
 
     images: [
       "/images/coach.png",
     ],
-  },
-
-  alternates: {
-    canonical: "https://mahanbalaei.ir",
   },
 
   robots: {
@@ -99,10 +105,29 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function Page() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "ماهان بالایی",
+    "alternateName": "Mahan Balaei",
+    "jobTitle": "مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی",
+    "description": "ماهان بالایی (Mahan Balaei) مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی با ۱۷+ سال سابقه تمرین و تخصص در برنامه‌ریزی تمرینات قدرتی، بدنسازی، کاهش و افزایش وزن و بهبود عملکرد ورزشی.",
+    "url": "https://mahanbalaei.ir",
+    "image": "https://mahanbalaei.ir/images/coach.png",
+    "sameAs": [
+      "https://instagram.com/coach.mahan",
+      "https://t.me/mahancoach",
+      "https://www.linkedin.com/in/mahanbalaei"
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
 
       <main>
