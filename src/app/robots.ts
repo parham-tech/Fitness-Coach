@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://mahan-coach.com/sitemap.xml", // آدرس نهایی دامنه شما
+    sitemap: "https://mahanbalaei.ir/sitemap.xml", // آدرس نهایی دامنه شما
   };
 }
