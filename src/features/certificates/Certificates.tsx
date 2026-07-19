@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Container from "@/shared/components/Container";
 import { useLanguage } from "@/providers/LanguageContext";
 
@@ -20,6 +21,7 @@ const certificates = [
 
 export default function Certificates() {
   const { t, isRtl } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section
@@ -29,25 +31,26 @@ export default function Certificates() {
       <Container>
         <div className="group flex flex-col items-center">
           <h2
+            onClick={() => setIsOpen(!isOpen)}
             className={`inline-block cursor-pointer border border-white px-6 py-3 text-3xl sm:text-4xl font-bold uppercase transition-colors duration-300 hover:border-yellow-400 ${
               isRtl ? "" : "font-bebas"
-            } tracking-wide text-white`}
+            } tracking-wide text-white select-none`}
           >
             {t("cert.title")}
           </h2>
 
           <div
-            className="
+            className={`
               mt-10
               grid w-full grid-cols-1 gap-6
               sm:grid-cols-2 lg:grid-cols-3
-              opacity-0 -translate-y-4
-              pointer-events-none
               transition-all duration-500
-              group-hover:opacity-100
-              group-hover:translate-y-0
-              group-hover:pointer-events-auto
-            "
+              ${
+                isOpen
+                  ? "opacity-100 translate-y-0 pointer-events-auto"
+                  : "opacity-0 -translate-y-4 pointer-events-none md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-hover:pointer-events-auto"
+              }
+            `}
           >
             {certificates.map((certificate) => (
               <div

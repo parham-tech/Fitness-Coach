@@ -9,8 +9,8 @@ import Contact from "@/features/contact/Contact";
 export const metadata: Metadata = {
   metadataBase: new URL("https://mahanbalaei.ir"),
 
-  title:
-    "ماهان بالایی | مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی (Mahan Balaei)",
+  
+  title: "ماهان بالایی | Mahan Balaei",
 
   description:
     "ماهان بالایی (Mahan Balaei) مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی با ۱۷+ سال سابقه تمرین و تخصص در برنامه‌ریزی تمرینات قدرتی و بهبود عملکرد ورزشی. / Mahan Balaei is a Strength Coach, Bodybuilding Coach & Powerlifting Champion with 17+ years of experience.",
