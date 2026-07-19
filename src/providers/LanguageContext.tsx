@@ -63,13 +63,13 @@ const translations: Record<Language, Record<string, string>> = {
     // Contact
     "contact.title": "Contact",
     "contact.email.label": "Email",
-    "contact.email.value": "coach@example.com",
+    "contact.email.value": "mahanbalaei04@gmail.com",
     "contact.instagram.label": "Instagram",
     "contact.instagram.value": "@coach.mahan",
     "contact.telegram.label": "Telegram",
     "contact.telegram.value": "@mahancoach",
     "contact.linkedin.label": "Linkedin",
-    "contact.linkedin.value": "Online Coaching",
+    "contact.linkedin.value": "mahanbalaei",
   },
   fa: {
     // Navbar
@@ -121,13 +121,13 @@ const translations: Record<Language, Record<string, string>> = {
     // Contact
     "contact.title": "تماس با من",
     "contact.email.label": "ایمیل",
-    "contact.email.value": "coach@example.com",
+    "contact.email.value": "mahanbalaei04@gmail.com",
     "contact.instagram.label": "اینستاگرام",
     "contact.instagram.value": "@coach.mahan",
     "contact.telegram.label": "تلگرام",
     "contact.telegram.value": "@mahancoach",
     "contact.linkedin.label": "لینکدین",
-    "contact.linkedin.value": "مربیگری آنلاین",
+    "contact.linkedin.value": "mahanbalaei",
   },
 };
 

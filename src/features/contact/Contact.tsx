@@ -11,7 +11,7 @@ const contacts = [
     imageClassName: "w-10 h-10",
     labelKey: "contact.email.label",
     valueKey: "contact.email.value",
-    href: "https://www.mahanbalaei04.com"
+    href: "mailto:mahanbalaei04@gmail.com"
   },
   {
     src: "/contact/instagram.svg",

@@ -15,16 +15,17 @@ export const metadata: Metadata = {
   description:
     "ماهان بالایی (Mahan Balaei) مربی بدنسازی، پاورلیفتینگ و آمادگی جسمانی با ۱۷+ سال سابقه تمرین و تخصص در برنامه‌ریزی تمرینات قدرتی و بهبود عملکرد ورزشی. / Mahan Balaei is a Strength Coach, Bodybuilding Coach & Powerlifting Champion with 17+ years of experience.",
 
-  authors: [
+   authors: [
     {
-      name: "Mahan Balaei",
+      name: "ماهان بالایی (Mahan Balaei)",
       url: "https://mahanbalaei.ir",
     },
   ],
 
-  creator: "Mahan Balaei",
+  creator: "ماهان بالایی (Mahan Balaei)",
 
-  publisher: "Mahan Balaei",
+  publisher: "ماهان بالایی (Mahan Balaei)",
+
 
   keywords: [
     "ماهان بالایی",
