@@ -79,7 +79,14 @@ export default function Contact() {
               </p>
 
               <p className="mt-2 text-sm sm:text-base font-semibold text-white transition-colors group-hover:text-yellow-400">
-                {t(item.valueKey)}
+                {item.valueKey === "contact.email.value" ? (
+                  <>
+                    <span>mahanbalaei04</span>
+                    <span className="hidden sm:inline">@gmail.com</span>
+                  </>
+                ) : (
+                  t(item.valueKey)
+                )}
               </p>
             </a>
           ))}
