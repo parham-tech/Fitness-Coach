@@ -30,16 +30,19 @@ export default function Certificates() {
     >
       <Container>
         <div className="group flex flex-col items-center">
-          <h2
+          <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-wide text-white">
+            <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`inline-block cursor-pointer border border-white px-6 py-3 text-3xl sm:text-4xl font-bold uppercase transition-colors duration-300 hover:border-yellow-400 ${
+              aria-expanded={isOpen}
+              className={`inline-block border border-white px-6 py-3 transition-colors duration-300 hover:border-yellow-400 ${
               isRtl ? "" : "font-bebas"
-            } tracking-wide text-white select-none`}
+              } select-none`}
           >
             {t("cert.title")}
+            </button>
           </h2>
 
-          <div
+          <ul
             className={`
               mt-10
               grid w-full grid-cols-1 gap-6
@@ -53,16 +56,16 @@ export default function Certificates() {
             `}
           >
             {certificates.map((certificate) => (
-              <div
+              <li
                 key={certificate.id}
                 className="rounded-lg border border-white/10 bg-zinc-900/50 p-6 text-center transition-colors hover:border-yellow-400/30 flex flex-col items-center justify-center min-h-[120px]"
               >
                 <h3 className="text-xl font-semibold text-white">
                   {t(certificate.titleKey)}
                 </h3>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </Container>
     </section>

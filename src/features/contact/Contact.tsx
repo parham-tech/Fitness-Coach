@@ -56,41 +56,42 @@ export default function Contact() {
           {t("contact.title")}
         </h2>
 
-        <div className="mt-12 grid gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-12 grid gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
           {contacts.map((item) => (
-            <a
-              key={item.labelKey}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t(item.labelKey)}
-              className="group rounded-xl border border-white/10 bg-zinc-900/40 p-6 text-center transition-all duration-300 hover:border-yellow-400/50 hover:bg-zinc-900/60"
-            >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                width={40}
-                height={40}
-                className={`${item.imageClassName} mx-auto mb-5 object-contain transition-transform duration-300 group-hover:scale-110`}
-              />
+            <li key={item.labelKey}>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t(item.labelKey)}: ${t(item.valueKey)}`}
+                className="group block h-full rounded-xl border border-white/10 bg-zinc-900/40 p-6 text-center transition-all duration-300 hover:border-yellow-400/50 hover:bg-zinc-900/60"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={40}
+                  height={40}
+                  className={`${item.imageClassName} mx-auto mb-5 object-contain transition-transform duration-300 group-hover:scale-110`}
+                />
 
-              <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400">
-                {t(item.labelKey)}
-              </p>
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400">
+                  {t(item.labelKey)}
+                </p>
 
-              <p className="mt-2 text-sm sm:text-base font-semibold text-white transition-colors group-hover:text-yellow-400">
-                {item.valueKey === "contact.email.value" ? (
-                  <>
-                    <span>mahanbalaei04</span>
-                    <span className="hidden sm:inline">@gmail.com</span>
-                  </>
-                ) : (
-                  t(item.valueKey)
-                )}
-              </p>
-            </a>
+                <p className="mt-2 text-sm sm:text-base font-semibold text-white transition-colors group-hover:text-yellow-400">
+                  {item.valueKey === "contact.email.value" ? (
+                    <>
+                      <span>mahanbalaei04</span>
+                      <span className="hidden sm:inline">@gmail.com</span>
+                    </>
+                  ) : (
+                    t(item.valueKey)
+                  )}
+                </p>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </Container>
     </section>
   );

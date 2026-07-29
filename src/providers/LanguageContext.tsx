@@ -38,21 +38,33 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     "about.tagline": "ABOUT MAHAN",
     "about.title": "Who Am I?",
-    "about.p1": "Mahan Balaei is a graduate in Sports Biology, a certified bodybuilding federation coach, and a strength athlete with over 17 years of training experience. He holds coaching certifications in bodybuilding, physical fitness, and weightlifting, and is a multi-time champion in powerlifting and bench press competitions across the provinces of Gilan, Alborz, and Tehran.",
-    "about.p2": "My approach is based on scientific knowledge, practical experience, and continuous performance development in sports.",
+    
+  "about.p1": "I hold a degree in Sports Biology and am a certified fitness coach accredited by the Iranian Bodybuilding Federation, as well as a strength athlete with over 17 years of training experience. I am also certified in bodybuilding, physical fitness, and weightlifting coaching, and have won multiple Powerlifting and Bench Press championships across the Gilan, Alborz, and Tehran provinces.",
 
+  "about.p2": "By combining scientific knowledge, hands-on experience, and a commitment to continuous learning, I strive to help every athlete reach their full potential and achieve lasting performance improvements."
+,
     // Achievements
     "ach.title": "Achievements",
+
     "ach.item1.title": "POWERLIFTING CHAMPION",
-    "ach.item1.text": "1st Place – Alborz Province (2016)",
+    "ach.item1.rank": "1st Place",
+    "ach.item1.details": " – Alborz Province (2016)",
+
     "ach.item2.title": "BENCH PRESS & METAL LOG LIFT",
-    "ach.item2.text": "1st Place – West Tehran (2017)",
+    "ach.item2.rank": "1st Place",
+    "ach.item2.details": " – West Tehran (2017)",
+
     "ach.item3.title": "NATIONAL POWERLIFTING",
-    "ach.item3.text": "2nd Place – Tehran Selection (2017)",
+    "ach.item3.rank": "2nd Place",
+    "ach.item3.details": " – Tehran Selection (2017)",
+
     "ach.item4.title": "DEADLIFT CHAMPION",
-    "ach.item4.text": "1st Place – Gilan Province (2012)",
+    "ach.item4.rank": "1st Place",
+    "ach.item4.details": " – Gilan Province (2012)",
+
     "ach.item5.title": "FITNESS CHALLENGE",
-    "ach.item5.text": "2nd Place – Gilan Province (2025)",
+    "ach.item5.rank": "2nd Place",
+    "ach.item5.details": " – Gilan Province (2025)",
 
     // Certificates
     "cert.title": "Certificates",
@@ -71,6 +83,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.linkedin.label": "Linkedin",
     "contact.linkedin.value": "mahanbalaei",
   },
+
   fa: {
     // Navbar
     "nav.logo": "ماهان بالایی",
@@ -96,21 +109,32 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     "about.tagline": "درباره ماهان",
     "about.title": "من کیم؟",
-    "about.p1": "ماهان بالایی فارغ‌التحصیل بیولوژی ورزشی، مربی رسمی فدراسیون بدنسازی و ورزشکار قدرتی با بیش از ۱۷ سال سابقه تمرین است. او دارای مدرک مربیگری در رشته‌های بدنسازی، آمادگی جسمانی و وزنه‌برداری بوده و قهرمان چندین دوره مسابقات پاورلیفتینگ و پرس سینه در استان‌های گیلان، البرز و تهران می‌باشد.",
-    "about.p2": "رویکرد من بر پایه دانش علمی، تجربه عملی و توسعه مداوم عملکرد در ورزش است.",
+   "about.p1": "من فارغ‌التحصیل بیولوژی ورزشی، مربی رسمی فدراسیون بدنسازی و ورزشکار قدرتی هستم و بیش از ۱۷ سال سابقه تمرین دارم. همچنین دارای مدرک مربیگری در رشته‌های بدنسازی، آمادگی جسمانی و وزنه‌برداری هستم و قهرمان چندین دوره مسابقات پاورلیفتینگ و پرس سینه در استان‌های گیلان، البرز و تهران بوده‌ام.",
+
+"about.p2": "با تکیه بر دانش علمی، تجربه عملی و یادگیری مستمر، تلاش می‌کنم بهترین مسیر را برای پیشرفت عملکرد ورزشی هر ورزشکار فراهم کنم.",
 
     // Achievements
     "ach.title": "افتخارات و قهرمانی‌ها",
+
     "ach.item1.title": "قهرمان پاورلیفتینگ",
-    "ach.item1.text": "مقام اول استان البرز (۲۰۱۶)",
+    "ach.item1.rank": "مقام اول",
+    "ach.item1.details": " استان البرز (۲۰۱۶)",
+
     "ach.item2.title": "پرس سینه و کنده فلزی",
-    "ach.item2.text": "مقام اول غرب تهران (۲۰۱۷)",
+    "ach.item2.rank": "مقام اول",
+    "ach.item2.details": " غرب تهران (۲۰۱۷)",
+
     "ach.item3.title": "پاورلیفتینگ",
-    "ach.item3.text": "مقام دوم انتخابی تیم ملی تهران (۲۰۱۷)",
+    "ach.item3.rank": "مقام دوم",
+    "ach.item3.details": " انتخابی تیم ملی تهران (۲۰۱۷)",
+
     "ach.item4.title": "قهرمان ددلیفت",
-    "ach.item4.text": "مقام اول استان گیلان (۲۰۱۲)",
+    "ach.item4.rank": "مقام اول",
+    "ach.item4.details": " استان گیلان (۲۰۱۲)",
+
     "ach.item5.title": "فیتنس چلنج",
-    "ach.item5.text": "مقام دوم استان گیلان (۲۰۲۵)",
+    "ach.item5.rank": "مقام دوم",
+    "ach.item5.details": " استان گیلان (۲۰۲۵)",
 
     // Certificates
     "cert.title": "مدارک و گواهینامه‌ها",
@@ -131,18 +155,26 @@ const translations: Record<Language, Record<string, string>> = {
   },
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
+export function LanguageProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [language, setLanguageState] = useState<Language>("fa");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Hydrate language choice from localStorage
     const savedLang = localStorage.getItem("preferredLanguage") as Language;
+
     if (savedLang === "en" || savedLang === "fa") {
       setLanguageState(savedLang);
     }
+
     setMounted(true);
   }, []);
 
@@ -165,7 +197,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [language, isRtl, mounted]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, isRtl }}>
+    <LanguageContext.Provider
+      value={{ language, setLanguage, t, isRtl }}
+    >
       <motion.div
         key={language}
         initial={{ opacity: 0 }}
@@ -180,8 +214,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
 export function useLanguage() {
   const context = useContext(LanguageContext);
+
   if (context === undefined) {
     throw new Error("useLanguage must be used within a LanguageProvider");
   }
+
   return context;
 }

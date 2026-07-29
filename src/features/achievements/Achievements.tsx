@@ -9,35 +9,40 @@ const achievements = [
     src: "/achievements/medal.svg",
     alt: "Medal Achievement",
     titleKey: "ach.item1.title",
-    textKey: "ach.item1.text",
+    rankKey: "ach.item1.rank",
+    detailsKey: "ach.item1.details",
     imageClassName: "w-15 h-15",
   },
   {
     src: "/achievements/press.svg",
     alt: "Bench Press & Metal Log Lift Achievement",
     titleKey: "ach.item2.title",
-    textKey: "ach.item2.text",
+    rankKey: "ach.item2.rank",
+    detailsKey: "ach.item2.details",
     imageClassName: "w-26 h-26",
   },
   {
     src: "/achievements/powerlift.svg",
     alt: "Powerlifting Achievement",
     titleKey: "ach.item3.title",
-    textKey: "ach.item3.text",
+    rankKey: "ach.item3.rank",
+    detailsKey: "ach.item3.details",
     imageClassName: "w-20 h-20",
   },
   {
     src: "/achievements/trophy_logo_traced 1.svg",
     alt: "Trophy Achievement",
     titleKey: "ach.item4.title",
-    textKey: "ach.item4.text",
+    rankKey: "ach.item4.rank",
+    detailsKey: "ach.item4.details",
     imageClassName: "w-24 h-24",
   },
   {
     src: "/achievements/shield_star_logo 1.svg",
     alt: "Shield Star Achievement",
     titleKey: "ach.item5.title",
-    textKey: "ach.item5.text",
+    rankKey: "ach.item5.rank",
+    detailsKey: "ach.item5.details",
     imageClassName: "w-18 h-18",
   },
 ];
@@ -79,8 +84,9 @@ export default function Achievements() {
               >
                 {t(item.titleKey)}
               </h3>
-              <p className="font-[200] text-[.625rem] sm:text-[.8rem] whitespace-nowrap">
-                {t(item.textKey)}
+              <p className="flex flex-col sm:flex-row text-center  font-[200] text-[.625rem] sm:text-[.8rem] whitespace-nowrap text-gray-300">
+                <strong className="font-bold text-white">{t(item.rankKey)}</strong>
+                {t(item.detailsKey)}
               </p>
               <div className="w-16 h-px bg-yellow-500/40 mt-4" />{" "}
             </div>

@@ -69,6 +69,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             className="text-white hover:text-yellow-400 transition-colors"
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

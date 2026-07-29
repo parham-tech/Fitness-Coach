@@ -94,7 +94,7 @@ export default function About() {
           <motion.p
             custom={2}
             variants={fadeInText}
-            className="mt-6 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed"
+            className={`mt-6 text-sm sm:text-base md:text-lg text-gray-300 ${isRtl ? "leading-relaxed" : "leading-snug"}`}
           >
             {t("about.p1")}
           </motion.p>
@@ -102,7 +102,7 @@ export default function About() {
           <motion.p
             custom={3}
             variants={fadeInText}
-            className="mt-4 text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed"
+            className={`mt-4 text-sm sm:text-base md:text-lg text-gray-300 ${isRtl ? "leading-relaxed" : "leading-snug"}`}
           >
             {t("about.p2")}
           </motion.p>
