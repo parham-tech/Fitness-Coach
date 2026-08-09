@@ -24,8 +24,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero.name": "MAHAN BALAEI",
-    "hero.title": "Strength & Conditioning Coach",
-    "hero.subtitle": "Bodybuilding & Powerlifting Expert",
+    "hero.title": "Bodybuilding & Fitness Coach",
+    "hero.subtitle": "Powerlifting Specialist",
     "hero.cert_btn": "MY CERTIFICATES",
     "hero.ach_btn": "MY ACHIEVEMENTS",
     "hero.high.professional": "PROFESSIONAL",
@@ -38,11 +38,12 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     "about.tagline": "ABOUT MAHAN",
     "about.title": "Who Am I?",
-    
-  "about.p1": "I hold a degree in Sports Biology and am a certified fitness coach accredited by the Iranian Bodybuilding Federation, as well as a strength athlete with over 17 years of training experience. I am also certified in bodybuilding, physical fitness, and weightlifting coaching, and have won multiple Powerlifting and Bench Press championships across the Gilan, Alborz, and Tehran provinces.",
 
-  "about.p2": "By combining scientific knowledge, hands-on experience, and a commitment to continuous learning, I strive to help every athlete reach their full potential and achieve lasting performance improvements."
-,
+    "about.p1":
+      "I hold a degree in Sports Biology and am a certified fitness coach accredited by the Iranian Bodybuilding Federation, as well as a strength athlete with over 17 years of training experience. I am also certified in bodybuilding, physical fitness, and weightlifting coaching, and have won multiple Powerlifting and Bench Press championships across the Gilan, Alborz, and Tehran provinces.",
+
+    "about.p2":
+      "By combining scientific knowledge, hands-on experience, and a commitment to continuous learning, I strive to help every athlete reach their full potential and achieve lasting performance improvements.",
     // Achievements
     "ach.title": "Achievements",
 
@@ -95,9 +96,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero.name": "ماهان بالایی",
-    "hero.title": "مربی بدنسازی و آمادگی جسمانی",
-    "hero.subtitle": "متخصص پرورش اندام و پاورلیفتینگ",
-    "hero.cert_btn": "مدارک من",
+    "hero.title": "مربی پرورش اندام و آمادگی جسمانی",
+    "hero.subtitle": "متخصص پاورلیفتینگ",
     "hero.ach_btn": "افتخارات من",
     "hero.high.professional": "حرفه‌ای",
     "hero.high.professional_desc": "مدارک و گواهینامه‌ها",
@@ -109,9 +109,11 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     "about.tagline": "درباره ماهان",
     "about.title": "من کیم؟",
-   "about.p1": "من فارغ‌التحصیل بیولوژی ورزشی، مربی رسمی فدراسیون بدنسازی و ورزشکار قدرتی هستم و بیش از ۱۷ سال سابقه تمرین دارم. همچنین دارای مدرک مربیگری در رشته‌های بدنسازی، آمادگی جسمانی و وزنه‌برداری هستم و قهرمان چندین دوره مسابقات پاورلیفتینگ و پرس سینه در استان‌های گیلان، البرز و تهران بوده‌ام.",
+    "about.p1":
+      "من فارغ‌التحصیل بیولوژی ورزشی، مربی رسمی فدراسیون بدنسازی و ورزشکار قدرتی هستم و بیش از ۱۷ سال سابقه تمرین دارم. همچنین دارای مدرک مربیگری در رشته‌های بدنسازی، آمادگی جسمانی و وزنه‌برداری هستم و قهرمان چندین دوره مسابقات پاورلیفتینگ و پرس سینه در استان‌های گیلان، البرز و تهران بوده‌ام.",
 
-"about.p2": "با تکیه بر دانش علمی، تجربه عملی و یادگیری مستمر، تلاش می‌کنم بهترین مسیر را برای پیشرفت عملکرد ورزشی هر ورزشکار فراهم کنم.",
+    "about.p2":
+      "با تکیه بر دانش علمی، تجربه عملی و یادگیری مستمر، تلاش می‌کنم بهترین مسیر را برای پیشرفت عملکرد ورزشی هر ورزشکار فراهم کنم.",
 
     // Achievements
     "ach.title": "افتخارات و قهرمانی‌ها",
@@ -156,14 +158,10 @@ const translations: Record<Language, Record<string, string>> = {
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
+  undefined,
 );
 
-export function LanguageProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("fa");
   const [mounted, setMounted] = useState(false);
 
@@ -197,9 +195,7 @@ export function LanguageProvider({
   }, [language, isRtl, mounted]);
 
   return (
-    <LanguageContext.Provider
-      value={{ language, setLanguage, t, isRtl }}
-    >
+    <LanguageContext.Provider value={{ language, setLanguage, t, isRtl }}>
       <motion.div
         key={language}
         initial={{ opacity: 0 }}
