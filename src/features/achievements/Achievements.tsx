@@ -56,7 +56,9 @@ export default function Achievements() {
         <div className="flex items-center gap-6">
           <div className="h-px flex-1 bg-yellow-500/40" />
 
-          <button  className={`${isRtl ? "" : "font-bebas"} text-3xl sm:text-4xl text-yellow-400 uppercase whitespace-nowrap`}>
+          <button
+            className={`${isRtl ? "" : "font-bebas"} text-3xl sm:text-4xl text-yellow-400 uppercase whitespace-nowrap`}
+          >
             {t("ach.title")}
           </button>
 
@@ -64,10 +66,10 @@ export default function Achievements() {
         </div>
 
         <div className="grid mt-20 gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
-          {achievements.map((item, index) => (
+          {achievements.map((item) => (
             <div
-              key={index}
-              className="overflow-hidden rounded-lg border border-white/10 bg-zinc-800 p-4 ms:p-6 hover:border-yellow-400/30 transition-colors flex flex-col items-center justify-center sm:gap-4"
+              key={item.src}
+              className="overflow-hidden rounded-lg border border-white/10 bg-zinc-800 p-4 sm:p-6 hover:border-yellow-400/30 transition-colors flex flex-col items-center justify-center sm:gap-4"
             >
               <div className="h-18 w-28 flex items-center justify-center flex-shrink-0">
                 <Image
@@ -78,20 +80,22 @@ export default function Achievements() {
                   className={`${item.imageClassName} max-w-full max-h-full object-contain hover:scale-[1.08] transition-transform duration-300`}
                 />
               </div>
+
               <h3
-                className="min-h-12
-              mt-2 sm:mt-0 text-center text-xs sm:text-[1rem] font-extrabold text-white uppercase tracking-wider leading-snug"
+                className="min-h-12 mt-2 sm:mt-0 text-center text-xs sm:text-[1rem] font-extrabold text-white uppercase tracking-wider leading-snug"
               >
                 {t(item.titleKey)}
               </h3>
-              <p className="flex flex-col sm:flex-row text-center  font-[200] text-[.625rem] sm:text-[.8rem] whitespace-nowrap text-gray-300">
-                <strong className="font-bold text-white">{t(item.rankKey)}</strong>
+
+              <p className="flex flex-col sm:flex-row text-center font-[200] text-[.625rem] sm:text-[.8rem] whitespace-nowrap text-gray-300">
+                <strong className="font-bold text-white">
+                  {t(item.rankKey)}
+                </strong>
                 {t(item.detailsKey)}
               </p>
-              <div className="w-16 h-px bg-yellow-500/40 mt-4" />{" "}
-            </div>
 
-            
+              <div className="w-16 h-px bg-yellow-500/40 mt-4" />
+            </div>
           ))}
         </div>
       </Container>
