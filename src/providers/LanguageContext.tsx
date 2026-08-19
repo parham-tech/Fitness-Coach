@@ -98,6 +98,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.name": "ماهان بالایی",
     "hero.title": "مربی پرورش اندام و آمادگی جسمانی",
     "hero.subtitle": "متخصص پاورلیفتینگ",
+    "hero.cert_btn": "مدارک من",
     "hero.ach_btn": "افتخارات من",
     "hero.high.professional": "حرفه‌ای",
     "hero.high.professional_desc": "مدارک و گواهینامه‌ها",
