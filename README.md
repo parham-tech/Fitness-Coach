@@ -1,108 +1,158 @@
-# Elite Fitness Coach Landing Page
+# Fitness Coach Landing Page
 
-An ultra-modern, high-performance landing page for an elite fitness coach and athletic trainer, built using **Next.js 15 (App Router)**, **React 19**, **GSAP**, **Framer Motion**, and **Tailwind CSS**.
+A modern, high-performance landing page built for a professional fitness coach and athletic trainer.
 
-This landing page features smooth cinematic video layouts, dynamic scroll-triggered animations, premium typography, custom components, and highly responsive modern UI sections designed to engage and convert potential clients.
-
----
+The project focuses on cinematic visuals, smooth animations, responsive layouts, accessibility, SEO, and optimized web performance while maintaining a clean and modular architecture.
 
 ## 🚀 Key Features
 
-- **Cinematic Hero Video Layering:** Rich video background with custom SVG text mask overlays and high-impact headlines.
-- **Scroll-Driven Interactive Animations:** Utilizing **GSAP ScrollTrigger** and **Framer Motion** for state-of-the-art interactive scrolling and viewport effects.
-- **Dynamic Text Effects:** Immersive custom text animations including character-by-character `SplitText` and smooth `BlurText` loading transitions.
-- **Achievements & Portfolio:** Interactive grids showcasing professional certificates, credentials, and career achievements.
-- **Modular & Clean Architecture:** Strongly decoupled features directory (`src/features`) and shareable atomic components (`src/shared`).
-- **Fully Responsive Design:** Tailored for a flawless experience across ultra-wide monitors, laptops, tablets, and smartphones.
-- **Premium Performance:** Fully optimized assets, lazy loading, and modern layout practices.
-
----
+* **Cinematic Hero Section:** Video-driven hero experience with layered visuals, custom SVG masking, and animated typography.
+* **Scroll-Driven Animations:** Interactive scroll effects powered by **GSAP ScrollTrigger**.
+* **Motion & Micro-Interactions:** Component-level animations and UI transitions using **Framer Motion**.
+* **Animated Typography:** Custom text animation components for immersive character and blur effects.
+* **Coach Showcase:** Dedicated sections for biography, achievements, certifications, and professional background.
+* **Responsive Design:** Optimized layouts and interactions across desktop, tablet, and mobile devices.
+* **Accessibility:** Semantic HTML, keyboard-friendly interactions, and appropriate accessibility attributes.
+* **SEO:** Search-engine-friendly page structure and metadata.
+* **Performance Optimization:** Optimized video and image assets, lazy loading, and modern Next.js rendering practices.
+* **Modular Architecture:** Feature-based organization with reusable shared components.
 
 ## 🛠 Tech Stack
 
-- **Framework:** Next.js 15.2.x (App Router)
-- **Library:** React 19
-- **Styling:** Tailwind CSS, PostCSS
-- **Animations:**
-  - GSAP (GreenSock Animation Platform) & `@gsap/react`
-  - Framer Motion
-- **Icons:** Lucide React, Custom SVGs
-- **Package Manager:** PNPM (Workspace-enabled)
-- **Code Quality:** ESLint & TypeScript
-
----
+* **Framework:** Next.js 16.2.9 (App Router)
+* **Library:** React 19.2.4
+* **Language:** TypeScript 5
+* **Styling:** Tailwind CSS 4
+* **Animations:** GSAP 3.15.0, GSAP ScrollTrigger, `@gsap/react`, Framer Motion 12.42.0
+* **Icons:** Lucide React
+* **Package Manager:** PNPM
+* **Code Quality:** ESLint 9 & TypeScript
 
 ## 📂 Project Structure
 
-```bash
+```text
 fitness-coach-landing/
-├── public/                  # Static assets
-│   ├── icons/               # SVGs, icons, and logo assets
-│   ├── images/              # High-res photography & coach portraits
-│   └── videos/              # Optimized hero backgrounds & mask videos
+├── public/
+│   ├── icons/                  # Icons, logos, and SVG assets
+│   ├── images/                 # Images and photography
+│   └── videos/                 # Optimized video assets
+│
 ├── src/
-│   ├── app/                 # Next.js App Router (Layouts, pages, globals.css)
-│   ├── features/            # Decoupled business logic & sections
-│   │   ├── hero/            # Video-driven hero section
-│   │   ├── about/           # Detailed biographical coach info
-│   │   ├── achievements/    # Interactive statistics & milestone grid
-│   │   ├── navbar/          # Responsive sticky navigation bar
-│   │   └── contact/         # Modern conversion form & CTA
-│   ├── providers/           # Context APIs (e.g., ScrollContext)
-│   └── shared/              # Shared components & types
-│       ├── components/      # SplitText, BlurText, Container, SectionTitle, etc.
-│       └── types/           # Global TypeScript type definitions
-└── configuration files      # tsconfig.json, next.config.ts, tailwind.config.ts, etc.
+│   ├── app/                    # Next.js App Router
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── globals.css
+│   │
+│   ├── features/               # Feature-specific sections and logic
+│   │   ├── hero/
+│   │   ├── about/
+│   │   ├── achievements/
+│   │   ├── navbar/
+│   │   └── contact/
+│   │
+│   ├── providers/              # Application providers
+│   │
+│   └── shared/                 # Reusable components and types
+│       ├── components/
+│       └── types/
+│
+├── package.json
+├── next.config.ts
+├── tsconfig.json
+└── ...
 ```
-
----
 
 ## ⚙️ Getting Started
 
 ### Prerequisites
 
-Make sure you have [Node.js](https://nodejs.org/) (v18+) and [pnpm](https://pnpm.io/) installed.
+Make sure you have the following installed:
+
+* [Node.js](https://nodejs.org/) 18+
+* [pnpm](https://pnpm.io/)
 
 ### 1. Clone the repository
+
 ```bash
-git clone https://github.com/your-username/fitness-coach-landing.git
-cd fitness-coach-landing
+git clone https://github.com/parham-tech/Fitness-Coach.git
+cd Fitness-Coach
 ```
 
 ### 2. Install dependencies
+
 ```bash
 pnpm install
 ```
 
 ### 3. Run the development server
+
 ```bash
 pnpm dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the live results!
+
+Open `http://localhost:3000` in your browser.
 
 ### 4. Build for production
+
 ```bash
 pnpm build
 pnpm start
 ```
 
----
+## 🎨 Animation & Interaction
 
-## 🎨 Design & Animation Details
+### GSAP & ScrollTrigger
 
-### GreenSock (GSAP) & ScrollTrigger
-GSAP is leveraged for precise scroll-linked timelines, ensuring animations play fluidly based on the user's viewport position without causing jank or layout shifts.
+GSAP is used for complex animation sequences and scroll-linked interactions.
+
+**ScrollTrigger** synchronizes animations with the user's scroll position to create controlled section transitions and cinematic visual effects.
 
 ### Framer Motion
-We employ Framer Motion for rapid declarative component-level entries, micro-interactions, hover states, and seamless spring physics on UI buttons.
 
-### Custom Component Highlights
-- `<SplitText />`: Automatically splits words/characters to apply delays and directional slides.
-- `<BlurText />`: Uses SVG filters and CSS transitions to elegantly reveal text from a blurred state.
-- `<Container />`: Enforces standard responsive padding and max-widths across all page sections.
+Framer Motion is used for declarative React animations, including:
 
----
+* Component entrances
+* UI transitions
+* Hover interactions
+* Micro-interactions
+
+### Custom Components
+
+The project includes reusable components for animation and layout, such as:
+
+* **`SplitText`** — Creates character- or word-based text entrance animations.
+* **`BlurText`** — Reveals text through animated blur and opacity transitions.
+* **`Container`** — Provides consistent responsive spacing and content widths.
+* **`SectionTitle`** — Provides a reusable structure for section headings.
+
+## ⚡ Performance
+
+Performance was considered throughout the implementation.
+
+Key optimization techniques include:
+
+* Optimized video assets
+* Optimized image loading
+* Lazy loading for non-critical content
+* Reduced unnecessary client-side work
+* Efficient animation patterns
+* Modern Next.js rendering strategies
+
+## 📱 Responsive Design
+
+The interface is designed to provide a consistent experience across:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+Layouts, typography, videos, animations, and interactive elements adapt to different viewport sizes.
+
+## 🌐 Live Demo
+
+https://mahanbalaei.ir
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
