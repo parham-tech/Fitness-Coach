@@ -1,11 +1,48 @@
 "use client";
 
+import { useRef, useState, useEffect } from "react";
 import Container from "@/shared/components/Container";
 import { useLanguage } from "@/providers/LanguageContext";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useReducedMotion } from "framer-motion";
+import { Play, Pause } from "lucide-react";
 
 export default function About() {
   const { t, isRtl } = useLanguage();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (shouldReduceMotion) {
+      video.pause();
+    } else {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay was prevented by browser policy
+        });
+      }
+    }
+  }, [shouldReduceMotion]);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(() => {
+          // Playback was prevented
+        });
+      }
+    } else {
+      video.pause();
+    }
+  };
 
   // 🎬 Framer Motion variants
   const fadeInText: Variants = {
@@ -50,11 +87,15 @@ export default function About() {
           className="relative order-2 lg:order-1 w-full max-w-md sm:max-w-2xl lg:max-w-none mx-auto aspect-[4/3] overflow-hidden rounded-2xl bg-black flex items-center justify-center border border-white/10"
         >
           <video
+            ref={videoRef}
             src="/videos/mask.mp4"
-            autoPlay
             loop
             muted
             playsInline
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            aria-hidden="true"
+            tabIndex={-1}
             className=" object-cover scale-90 inset-0 w-full h-full"
           />
           <div className="absolute inset-0 bg-black flex flex-col items-center justify-center mix-blend-multiply select-none pointer-events-none">
@@ -65,6 +106,20 @@ export default function About() {
               BALAEI
             </span>
           </div>
+
+          {/* Accessible Play/Pause Toggle */}
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-label={isPlaying ? t("about.pause_video") : t("about.play_video")}
+            className="absolute bottom-3 start-3 z-20 flex items-center justify-center p-2.5 rounded-lg bg-black/70 backdrop-blur-md border border-white/30 text-white hover:text-yellow-400 hover:border-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-yellow-400 transition-colors shadow-lg cursor-pointer"
+          >
+            {isPlaying ? (
+              <Pause className="w-4 h-4" aria-hidden="true" />
+            ) : (
+              <Play className="w-4 h-4" aria-hidden="true" />
+            )}
+          </button>
         </motion.div>
 
         {/* TEXT SIDE */}

@@ -21,6 +21,13 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.achievements": "Achievements",
     "nav.certificates": "Certificates",
     "nav.contact": "Contact",
+    "nav.skip_link": "Skip to main content",
+    "nav.main_desktop": "Main navigation",
+    "nav.main_mobile": "Mobile navigation",
+    "nav.open_menu": "Open navigation menu",
+    "nav.close_menu": "Close navigation menu",
+    "nav.lang_switch": "Change language to Persian (FA)",
+    "nav.lang_switched": "Website language switched to English",
 
     // Hero
     "hero.name": "MAHAN BALAEI",
@@ -38,6 +45,8 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     "about.tagline": "ABOUT MAHAN",
     "about.title": "Who Am I?",
+    "about.pause_video": "Pause background video",
+    "about.play_video": "Play background video",
 
     "about.p1":
       "I hold a degree in Sports Biology and am a certified fitness coach accredited by the Iranian Bodybuilding Federation, as well as a strength athlete with over 17 years of training experience. I am also certified in bodybuilding, physical fitness, and weightlifting coaching, and have won multiple Powerlifting and Bench Press championships across the Gilan, Alborz, and Tehran provinces.",
@@ -83,6 +92,9 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.telegram.value": "@mahancoach",
     "contact.linkedin.label": "Linkedin",
     "contact.linkedin.value": "mahanbalaei",
+
+    // Common
+    "common.new_tab": "(opens in a new tab)",
   },
 
   fa: {
@@ -93,6 +105,13 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.achievements": "افتخارات",
     "nav.certificates": "مدارک",
     "nav.contact": "تماس با من",
+    "nav.skip_link": "پرش به محتوای اصلی",
+    "nav.main_desktop": "منوی ناوبری اصلی",
+    "nav.main_mobile": "منوی ناوبری موبایل",
+    "nav.open_menu": "باز کردن منوی ناوبری",
+    "nav.close_menu": "بستن منوی ناوبری",
+    "nav.lang_switch": "تغییر زبان به انگلیسی (EN)",
+    "nav.lang_switched": "زبان سایت به فارسی تغییر یافت",
 
     // Hero
     "hero.name": "ماهان بالایی",
@@ -110,6 +129,8 @@ const translations: Record<Language, Record<string, string>> = {
     // About
     "about.tagline": "درباره ماهان",
     "about.title": "من کیم؟",
+    "about.pause_video": "توقف ویدیوی پس‌زمینه",
+    "about.play_video": "پخش ویدیوی پس‌زمینه",
     "about.p1":
       "من فارغ‌التحصیل بیولوژی ورزشی، مربی رسمی فدراسیون بدنسازی و ورزشکار قدرتی هستم و بیش از ۱۷ سال سابقه تمرین دارم. همچنین دارای مدرک مربیگری در رشته‌های بدنسازی، آمادگی جسمانی و وزنه‌برداری هستم و قهرمان چندین دوره مسابقات پاورلیفتینگ و پرس سینه در استان‌های گیلان، البرز و تهران بوده‌ام.",
 
@@ -155,6 +176,9 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.telegram.value": "@mahancoach",
     "contact.linkedin.label": "لینکدین",
     "contact.linkedin.value": "mahanbalaei",
+
+    // Common
+    "common.new_tab": "(در برگه جدید باز می‌شود)",
   },
 };
 
@@ -165,13 +189,20 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("fa");
   const [mounted, setMounted] = useState(false);
+  const [announcement, setAnnouncement] = useState("");
 
   useEffect(() => {
     // Hydrate language choice from localStorage
     const savedLang = localStorage.getItem("preferredLanguage") as Language;
 
     if (savedLang === "en" || savedLang === "fa") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Client hydration of preferred language from localStorage requires post-mount state update
       setLanguageState(savedLang);
+      document.documentElement.lang = savedLang;
+      document.documentElement.dir = savedLang === "fa" ? "rtl" : "ltr";
+    } else {
+      document.documentElement.lang = "fa";
+      document.documentElement.dir = "rtl";
     }
 
     setMounted(true);
@@ -180,6 +211,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem("preferredLanguage", lang);
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+    setAnnouncement(translations[lang]["nav.lang_switched"]);
   };
 
   const t = (key: string): string => {
@@ -197,6 +231,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t, isRtl }}>
+      <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {announcement}
+      </div>
       <motion.div
         key={language}
         initial={{ opacity: 0 }}

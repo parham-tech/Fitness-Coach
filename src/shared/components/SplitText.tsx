@@ -37,7 +37,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   textAlign = 'center',
   onLetterAnimationComplete
 }) => {
-  const ref = useRef<HTMLParagraphElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const animationCompletedRef = useRef(false);
   const onCompleteRef = useRef(onLetterAnimationComplete);
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
@@ -48,13 +48,15 @@ const SplitText: React.FC<SplitTextProps> = ({
   }, [onLetterAnimationComplete]);
 
   useEffect(() => {
-    if (document.fonts.status === 'loaded') {
-      setFontsLoaded(true);
-    } else {
-      document.fonts.ready.then(() => {
+    let isMounted = true;
+    document.fonts.ready.then(() => {
+      if (isMounted) {
         setFontsLoaded(true);
-      });
-    }
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   useGSAP(
@@ -69,7 +71,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       if (el._rbsplitInstance) {
         try {
           el._rbsplitInstance.revert();
-        } catch (_) {}
+        } catch {}
         el._rbsplitInstance = undefined;
       }
 
@@ -91,6 +93,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         if (!targets.length && splitType.includes('words') && self.words.length) targets = self.words;
         if (!targets.length && splitType.includes('lines') && self.lines.length) targets = self.lines;
         if (!targets.length) targets = self.chars || self.words || self.lines;
+        targets.forEach((t) => (t as HTMLElement).setAttribute?.('aria-hidden', 'true'));
       };
       const splitInstance = new GSAPSplitText(el, {
         type: splitType,
@@ -134,7 +137,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         });
         try {
           splitInstance.revert();
-        } catch (_) {}
+        } catch {}
         el._rbsplitInstance = undefined;
       };
     },
@@ -165,8 +168,14 @@ const SplitText: React.FC<SplitTextProps> = ({
     const Tag = (tag || 'p') as React.ElementType;
 
     return (
-      <Tag ref={ref} style={style} className={classes}>
-        {text}
+      <Tag style={style} className={classes}>
+        {/* Semantic full text alternative for assistive technology & JS fallbacks */}
+        <span className="sr-only">{text}</span>
+
+        {/* Visual GSAP animation layer, completely hidden from assistive tech */}
+        <span ref={ref} aria-hidden="true" className="inline-block">
+          {text}
+        </span>
       </Tag>
     );
   };

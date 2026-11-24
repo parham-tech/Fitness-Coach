@@ -1,6 +1,21 @@
 @import "tailwindcss";
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+a,
+button,
+input,
+select,
+textarea,
+[tabindex]:not([tabindex="-1"]) {
+  scroll-margin-top: 5.5rem;
+}
+
+:focus-visible:not([tabindex="-1"]) {
+  outline: 2px solid #facc15;
+  outline-offset: 3px;
 }
 
 body {
@@ -14,6 +29,26 @@ html[lang="fa"] body {
 .font-bebas {
   font-family: var(--font-bebas);
 }
+
+@keyframes pulse-finite {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.animate-pulse-finite {
+  animation: pulse-finite 2s ease-in-out 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-finite {
+    animation: none;
+  }
+}
+
 @theme {
   --breakpoint-xs: 30rem; /* 480px */
 }

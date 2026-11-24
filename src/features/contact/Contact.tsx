@@ -53,40 +53,39 @@ export default function Contact() {
         </h2>
 
         <ul className="mt-12 grid gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4">
-          {contacts.map((item) => (
-            <li key={item.labelKey}>
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${t(item.labelKey)}: ${t(item.valueKey)}`}
-                className="group block h-full rounded-xl border border-white/40 bg-zinc-900/40 p-6 text-center transition-all duration-300 hover:border-yellow-400/50 hover:bg-zinc-900/60"
-              >
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  width={48}
-                  height={48}
-                  className="w-9 h-9 sm:w-10 sm:h-10 mx-auto mb-5 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
+          {contacts.map((item) => {
+            const isExternal = item.href.startsWith("http");
+            return (
+              <li key={item.labelKey}>
+                <a
+                  href={item.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  aria-label={`${t(item.labelKey)}: ${t(item.valueKey)}${isExternal ? ` ${t("common.new_tab")}` : ""}`}
+                  className="group block h-full rounded-xl border border-white/40 bg-zinc-900/40 p-6 text-center transition-all duration-300 hover:border-yellow-400/50 hover:bg-zinc-900/60"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    aria-hidden="true"
+                    width={48}
+                    height={48}
+                    className="w-9 h-9 sm:w-10 sm:h-10 mx-auto mb-5 object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
 
-                <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400">
-                  {t(item.labelKey)}
-                </p>
+                  <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400">
+                    {t(item.labelKey)}
+                  </p>
 
-                <p className="mt-2 text-sm sm:text-base font-semibold text-white transition-colors group-hover:text-yellow-400">
-                  {item.valueKey === "contact.email.value" ? (
-                    <>
-                      <span>mahanbalaei04</span>
-                      <span className="hidden sm:inline">@gmail.com</span>
-                    </>
-                  ) : (
-                    t(item.valueKey)
-                  )}
-                </p>
-              </a>
-            </li>
-          ))}
+                  <p className="mt-2 text-sm sm:text-base font-semibold text-white transition-colors group-hover:text-yellow-400">
+                    <span dir="ltr" lang="en" className="inline-block break-all">
+                      {t(item.valueKey)}
+                    </span>
+                  </p>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </Container>
     </section>

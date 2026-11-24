@@ -131,26 +131,12 @@ export default function Page() {
       />
       <Navbar />
 
-      <main>
-        <section id="home">
-          <Hero />
-        </section>
-
-        <section id="about">
-          <About />
-        </section>
-
-        <section id="achievements">
-          <Achievements />
-        </section>
-
-        <section id="certificates">
-          <Certificates />
-        </section>
-
-        <section id="contact">
-          <Contact />
-        </section>
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">
+        <Hero />
+        <About />
+        <Achievements />
+        <Certificates />
+        <Contact />
       </main>
     </>
   );

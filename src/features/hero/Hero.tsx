@@ -3,25 +3,30 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Container from "@/shared/components/Container";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useReducedMotion } from "framer-motion";
 import SplitText from "@/shared/components/SplitText";
 import { useLanguage } from "@/providers/LanguageContext";
 
 export default function Hero() {
   const { t, isRtl } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.load();
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.log("Autoplay failed or was prevented:", error);
-        });
+      if (shouldReduceMotion) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.load();
+        const playPromise = videoRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.log("Autoplay failed or was prevented:", error);
+          });
+        }
       }
     }
-  }, []);
+  }, [shouldReduceMotion]);
 
   // 🎬 Framer Motion variants
   const fadeInText: Variants = {
@@ -61,17 +66,18 @@ export default function Hero() {
         >
 
           {/* 🔥 GSAP SPLIT TEXT (ONLY H1) */}
-          <div className={`${isRtl ? "" : "font-bebas"} text-4xl  sm:text-5xl md:text-6xl rtl:md:text-5xl lg:text-[64px] leading-none rtl:leading-snug uppercase`}>
+          <h1 className={`${isRtl ? "" : "font-bebas"} text-4xl  sm:text-5xl md:text-6xl rtl:md:text-5xl lg:text-[64px] leading-none rtl:leading-snug uppercase`}>
             {isRtl ? (
               t("hero.name")
             ) : (
               <SplitText
                 text={t("hero.name")}
                 splitType="chars"
+                tag="span"
                 className="inline-block"
               />
             )}
-          </div>
+          </h1>
 
           {/* FRAMER TEXT */}
           <motion.h2
@@ -85,7 +91,7 @@ export default function Hero() {
           <motion.p
             custom={2}
             variants={fadeInText}
-            className={`${isRtl ? "text-lg sm:text-xl md:text-2xl lg:text-[24px]" : "font-bebas text-xl sm:text-2xl md:text-3xl lg:text-[32px]"} leading-none text-yellow-400 animate-pulse mt-2`}
+            className={`${isRtl ? "text-lg sm:text-xl md:text-2xl lg:text-[24px]" : "font-bebas text-xl sm:text-2xl md:text-3xl lg:text-[32px]"} leading-none text-yellow-400 animate-pulse-finite motion-reduce:animate-none mt-2`}
           >
             {t("hero.subtitle")}
           </motion.p>
@@ -100,7 +106,8 @@ export default function Hero() {
               {t("hero.cert_btn")}
               <Image
                 src="/icons/rightarr.svg"
-                alt="Certificate"
+                alt=""
+                aria-hidden="true"
                 width={20}
                 height={20}
                 className={`hidden lg:block ${isRtl ? "rotate-180" : ""}`}
@@ -122,7 +129,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
               <Image src="/icons/certificate.svg" alt="" width={26} height={28} className="mt-1 flex-shrink-0" />
               <div className="flex flex-col items-center sm:items-start">
-                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">{t("hero.high.professional")}</h5>
+                <h3 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">{t("hero.high.professional")}</h3>
                 <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">{t("hero.high.professional_desc")}</p>
               </div>
             </div>
@@ -130,7 +137,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
               <Image src="/icons/trophy.svg" alt="" width={28} height={24} className="mt-1 flex-shrink-0" />
               <div className="flex flex-col items-center sm:items-start">
-                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">{t("hero.high.competitive")}</h5>
+                <h3 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">{t("hero.high.competitive")}</h3>
                 <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">{t("hero.high.competitive_desc")}</p>
               </div>
             </div>
@@ -138,7 +145,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 bg-zinc-900/40 p-3 rounded-lg sm:bg-transparent sm:p-0">
               <Image src="/icons/sience.svg" alt="" width={24} height={24} className="mt-1 flex-shrink-0" />
               <div className="flex flex-col items-center sm:items-start">
-                <h5 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white whitespace-nowrap">{t("hero.high.sports_science")}</h5>
+                <h3 className="font-bold text-[.66rem] sm:text-[.8rem] uppercase text-white">{t("hero.high.sports_science")}</h3>
                 <p className="font-bold text-[.6rem] sm:text-[.7rem] text-gray-400">{t("hero.high.sports_science_desc")}</p>
               </div>
             </div>
@@ -159,10 +166,11 @@ export default function Hero() {
             src="/videos/herovideo.mp4"
             autoPlay
             muted
-            
             playsInline
             preload="auto"
-            className="w-full h-full object-cover   origin-center absolute inset-0"
+            aria-hidden="true"
+            tabIndex={-1}
+            className="w-full h-full object-cover origin-center absolute inset-0"
           />
         </motion.div>
 

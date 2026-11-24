@@ -7,7 +7,7 @@ import { useLanguage } from "@/providers/LanguageContext";
 const achievements = [
   {
     src: "/achievements/medal.svg",
-    alt: "Medal Achievement",
+    alt: "",
     titleKey: "ach.item1.title",
     rankKey: "ach.item1.rank",
     detailsKey: "ach.item1.details",
@@ -15,7 +15,7 @@ const achievements = [
   },
   {
     src: "/achievements/press.svg",
-    alt: "Bench Press & Metal Log Lift Achievement",
+    alt: "",
     titleKey: "ach.item2.title",
     rankKey: "ach.item2.rank",
     detailsKey: "ach.item2.details",
@@ -23,7 +23,7 @@ const achievements = [
   },
   {
     src: "/achievements/powerlift.svg",
-    alt: "Powerlifting Achievement",
+    alt: "",
     titleKey: "ach.item3.title",
     rankKey: "ach.item3.rank",
     detailsKey: "ach.item3.details",
@@ -31,7 +31,7 @@ const achievements = [
   },
   {
     src: "/achievements/trophy_logo_traced 1.svg",
-    alt: "Trophy Achievement",
+    alt: "",
     titleKey: "ach.item4.title",
     rankKey: "ach.item4.rank",
     detailsKey: "ach.item4.details",
@@ -39,7 +39,7 @@ const achievements = [
   },
   {
     src: "/achievements/shield_star_logo 1.svg",
-    alt: "Shield Star Achievement",
+    alt: "",
     titleKey: "ach.item5.title",
     rankKey: "ach.item5.rank",
     detailsKey: "ach.item5.details",
@@ -51,16 +51,17 @@ export default function Achievements() {
   const { t, isRtl } = useLanguage();
 
   return (
-    <section id="achievements" className="py-16 md:py-28 bg-zinc-950/20">
+    <section id="achievements" aria-labelledby="achievements-title" className="py-16 md:py-28 bg-zinc-950/20">
       <Container>
         <div className="flex items-center gap-6">
           <div className="h-px flex-1 bg-yellow-500/40" />
 
-          <button
-            className={`${isRtl ? "" : "font-bebas"} text-3xl sm:text-4xl text-yellow-400 uppercase whitespace-nowrap`}
+          <h2
+            id="achievements-title"
+            className={`${isRtl ? "" : "font-bebas"} text-3xl sm:text-4xl text-yellow-400 uppercase`}
           >
             {t("ach.title")}
-          </button>
+          </h2>
 
           <div className="h-px flex-1 bg-yellow-500/40" />
         </div>
@@ -75,6 +76,7 @@ export default function Achievements() {
                 <Image
                   src={item.src}
                   alt={item.alt}
+                  aria-hidden="true"
                   width={120}
                   height={120}
                   className={`${item.imageClassName} max-w-full max-h-full object-contain hover:scale-[1.08] transition-transform duration-300`}
@@ -87,7 +89,7 @@ export default function Achievements() {
                 {t(item.titleKey)}
               </h3>
 
-              <p className="flex flex-col sm:flex-row text-center font-[200] text-[.625rem] sm:text-[.8rem] whitespace-nowrap text-gray-300">
+              <p className="flex flex-col sm:flex-row text-center font-[200] text-[.625rem] sm:text-[.8rem] text-wrap text-gray-300">
                 <strong className="font-bold text-white">
                   {t(item.rankKey)}
                 </strong>
