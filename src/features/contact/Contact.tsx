@@ -8,23 +8,20 @@ const contacts = [
   {
     src: "/contact/email.svg",
     alt: "",
-    imageClassName: "w-10 h-10",
     labelKey: "contact.email.label",
     valueKey: "contact.email.value",
-    href: "mailto:mahanbalaei04@gmail.com"
+    href: "mailto:mahanbalaei04@gmail.com",
   },
   {
     src: "/contact/instagram.svg",
     alt: "",
-    imageClassName: "w-10 h-10",
     labelKey: "contact.instagram.label",
     valueKey: "contact.instagram.value",
-    href: "https://instagram.com/coach.mahan",
+    href: "https://www.instagram.com/mahanbalaei74",
   },
   {
     src: "/contact/telegram.svg",
     alt: "",
-    imageClassName: "w-10 h-10",
     labelKey: "contact.telegram.label",
     valueKey: "contact.telegram.value",
     href: "https://t.me/mahancoach",
@@ -32,7 +29,6 @@ const contacts = [
   {
     src: "/contact/linkdin.svg",
     alt: "",
-    imageClassName: "w-10 h-10",
     labelKey: "contact.linkedin.label",
     valueKey: "contact.linkedin.value",
     href: "https://www.linkedin.com/in/mahanbalaei",
@@ -64,14 +60,14 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${t(item.labelKey)}: ${t(item.valueKey)}`}
-                className="group block h-full rounded-xl border border-white/10 bg-zinc-900/40 p-6 text-center transition-all duration-300 hover:border-yellow-400/50 hover:bg-zinc-900/60"
+                className="group block h-full rounded-xl border border-white/40 bg-zinc-900/40 p-6 text-center transition-all duration-300 hover:border-yellow-400/50 hover:bg-zinc-900/60"
               >
                 <Image
                   src={item.src}
                   alt={item.alt}
-                  width={40}
-                  height={40}
-                  className={`${item.imageClassName} mx-auto mb-5 object-contain transition-transform duration-300 group-hover:scale-110`}
+                  width={48}
+                  height={48}
+                  className="w-9 h-9 sm:w-10 sm:h-10 mx-auto mb-5 object-contain transition-transform duration-300 group-hover:scale-110"
                 />
 
                 <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400">
