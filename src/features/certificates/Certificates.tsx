@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Container from "@/shared/components/Container";
 import { useLanguage } from "@/providers/LanguageContext";
+import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const certificates = [
   {
@@ -22,50 +24,74 @@ const certificates = [
 export default function Certificates() {
   const { t, isRtl } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
       id="certificates"
-      className="py-16 md:py-28 bg-zinc-950/20"
+      aria-labelledby="certificates-title"
+      className={`bg-zinc-950/20 pt-16 md:pt-24 transition-[padding-bottom] duration-300 ${
+        isOpen ? "pb-16 md:pb-28" : "pb-8 md:pb-12"
+      }`}
     >
       <Container>
-        <div className="group flex flex-col items-center">
-          <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-wide text-white">
+        <div className="flex flex-col items-center">
+          <h2 id="certificates-title" className="text-3xl sm:text-4xl font-bold uppercase tracking-wide text-white">
             <button
-            onClick={() => setIsOpen(!isOpen)}
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
-              className={`inline-block border border-white px-6 py-3 transition-colors duration-300 hover:border-yellow-400 ${
-              isRtl ? "" : "font-bebas"
+              aria-controls="certificates-list"
+              className={`flex items-center gap-3 border border-white px-6 py-3 transition-colors duration-300 hover:border-yellow-400 hover:text-yellow-400 cursor-pointer rounded-md ${
+                isRtl ? "" : "font-bebas"
               } select-none`}
-          >
-            {t("cert.title")}
+            >
+              <span>{t("cert.title")}</span>
+              <ChevronDown
+                className={`h-5 w-5 transition-transform ${
+                  shouldReduceMotion ? "duration-0" : "duration-300"
+                } ${isOpen ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              />
             </button>
           </h2>
 
-          <ul
-            className={`
-              mt-10
-              grid w-full grid-cols-1 gap-6
-              sm:grid-cols-2 lg:grid-cols-3
-              transition-all duration-500
-              ${
-                isOpen
-                  ? "opacity-100 translate-y-0 pointer-events-auto"
-                  : "opacity-0 -translate-y-4 pointer-events-none md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-hover:pointer-events-auto"
-              }
-            `}
-          >
-            {certificates.map((certificate) => (
-              <li
-                key={certificate.id}
-                className="rounded-lg border border-white/10 bg-zinc-900/50 p-6 text-center transition-colors hover:border-yellow-400/30 flex flex-col items-center justify-center min-h-[120px]"
+          <AnimatePresence initial={false}>
+            {isOpen && (
+              <motion.div
+                id="certificates-list"
+                key="certificates-content"
+                initial={shouldReduceMotion ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={shouldReduceMotion ? { opacity: 0, height: 0, transition: { duration: 0 } } : { opacity: 0, height: 0 }}
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : {
+                        height: { duration: 0.35, ease: [0.33, 1, 0.68, 1] },
+                        opacity: { duration: 0.25, delay: 0.05 },
+                      }
+                }
+                className="w-full overflow-hidden"
               >
-                <h3 className="text-xl font-semibold text-white">
-                  {t(certificate.titleKey)}
-                </h3>
-              </li>
-            ))}
-          </ul>
+                <ul
+                  role="list"
+                  className="mt-8 sm:mt-10 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                >
+                  {certificates.map((certificate) => (
+                    <li
+                      key={certificate.id}
+                      className="rounded-lg border border-white/10 bg-zinc-900/50 p-6 text-center transition-colors hover:border-yellow-400/30 flex flex-col items-center justify-center min-h-[120px]"
+                    >
+                      <h3 className="text-xl font-semibold text-white">
+                        {t(certificate.titleKey)}
+                      </h3>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </Container>
     </section>
