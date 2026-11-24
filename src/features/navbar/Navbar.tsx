@@ -46,7 +46,7 @@ export default function Navbar() {
           {/* Language Switcher */}
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-1 px-3 py-1.5 text-xs font-bold border border-white/20 rounded-md hover:border-yellow-400 hover:text-yellow-400 transition-all cursor-pointer bg-zinc-900/50"
+            className="flex items-center gap-1 px-3 py-1.5 text-xs font-bold border border-white/40 rounded-md hover:border-yellow-400 hover:text-yellow-400 transition-all cursor-pointer bg-zinc-900/50"
           >
             <Globe className="h-3.5 w-3.5" />
             <span>{language === "en" ? "FA" : "EN"}</span>
@@ -58,7 +58,7 @@ export default function Navbar() {
           {/* Mobile Language Switcher */}
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold border border-white/20 rounded-md hover:border-yellow-400 hover:text-yellow-400 transition-all cursor-pointer bg-zinc-900/50"
+            className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-bold border border-white/40 rounded-md hover:border-yellow-400 hover:text-yellow-400 transition-all cursor-pointer bg-zinc-900/50"
           >
             <Globe className="h-3.5 w-3.5" />
             <span>{language === "en" ? "FA" : "EN"}</span>

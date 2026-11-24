@@ -96,7 +96,7 @@ export default function Hero() {
             variants={fadeInText}
             className="mt-6 flex flex-col self-stretch mx-16 sm:mx-0 sm:self-auto sm:flex-row gap-4"
           >
-            <a href="#certificates" className="flex font-bold text-[.7rem] sm:text-sm justify-center items-center gap-2 italic w-full sm:w-42 lg:w-52 bg-red-500 border border-black px-4 py-2 lg:px-6 lg:py-3 rounded-md hover:bg-red-600 transition-colors">
+            <a href="#certificates" className="flex font-bold text-[.7rem] sm:text-sm justify-center items-center gap-2 italic w-full sm:w-42 lg:w-52 bg-red-600 border border-black px-4 py-2 lg:px-6 lg:py-3 rounded-md hover:bg-red-700 transition-colors">
               {t("hero.cert_btn")}
               <Image
                 src="/icons/rightarr.svg"
